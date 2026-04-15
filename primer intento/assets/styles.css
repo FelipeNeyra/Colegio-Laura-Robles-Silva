@@ -2,17 +2,13 @@
    VARIABLES DE COLOR Y MODO OSCURO
    ========================================= */
 :root {
-    /* Colores estáticos que no cambian */
     --color-rojo: #db353d;
-    
-    /* Variables de Modo Claro por defecto */
     --fondo-sitio: #d9d9d9;
     --texto-principal: #333333;
     --texto-secundario: #555555;
     --borde-lateral: #bbbbbb;
 }
 
-/* Variables cuando el modo oscuro está activo */
 [data-theme="oscuro"] {
     --fondo-sitio: #545454;
     --texto-principal: #ffffff;
@@ -29,23 +25,19 @@
     box-sizing: border-box;
 }
 
-/* Transición suave para que el cambio de color no sea brusco */
 body {
     background-color: var(--fondo-sitio);
     color: var(--texto-principal);
-    /* Asumiendo que tienes Montaser Arabic instalada. 
-       Si no, usa sans-serif como respaldo. */
-    font-family: 'Montaser Arabic', sans-serif; 
+    font-family: 'sans - serif', sans-serif; 
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Aplicamos League Spartan a los títulos y navegación */
 h1, h2, .nav-link, .nombre-usuario, .item-lateral {
     font-family: 'League Spartan', sans-serif;
 }
 
 /* =========================================
-   CABECERA (HEADER)
+   CABECERA E IMÁGENES
    ========================================= */
 header {
     display: flex;
@@ -60,16 +52,11 @@ header {
     gap: 1rem;
 }
 
-.logo-placeholder {
-    width: 60px;
-    height: 70px;
-    border: 2px solid var(--color-rojo);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-rojo);
-    font-size: 0.8rem;
-    border-radius: 5px 5px 30px 30px; /* Forma de escudo básica */
+/* AQUÍ CONTROLAS EL TAMAÑO DEL ESCUDO */
+.logo-escuela {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
 }
 
 h1 {
@@ -84,11 +71,12 @@ h1 {
 }
 
 /* =========================================
-   NAVEGACIÓN
+   NAVEGACIÓN E ICONOS
    ========================================= */
 .navegacion {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-link {
@@ -108,10 +96,21 @@ h1 {
     font-family: 'League Spartan', sans-serif;
 }
 
-.icono {
-    font-size: 1.5rem;
-    margin-bottom: 0.3rem;
+/* AQUÍ CONTROLAS EL TAMAÑO DE LOS ICONOS DE NAVEGACIÓN */
+.icono-img {
+    height: 25px;
+    width: auto;
+    margin-bottom: 5px;
+    object-fit: contain;
 }
+
+/* Filtro opcional: Si tus iconos son negros y quieres que 
+   se vean blancos en modo oscuro, descomenta la siguiente línea */
+/*
+[data-theme="oscuro"] .icono-img {
+    filter: brightness(0) invert(1);
+}
+*/
 
 /* =========================================
    PERFIL DE USUARIO
@@ -140,7 +139,7 @@ h1 {
 }
 
 /* =========================================
-   IMAGEN PRINCIPAL (HERO)
+   IMAGEN PRINCIPAL (PATIO)
    ========================================= */
 .banner-imagen img {
     width: 100%;
@@ -158,7 +157,6 @@ h1 {
     gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
-    /* Esto ayuda al salto del botón "Inicio" para que no quede pegado arriba */
     scroll-margin-top: 2rem; 
 }
 
