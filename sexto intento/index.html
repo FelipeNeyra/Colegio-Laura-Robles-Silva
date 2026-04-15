@@ -91,52 +91,32 @@
 
             <article id="sec-galeria" class="texto-lectura seccion-oculta">
                 <h2>Galería de Actividades</h2>
-                
+
                 <label for="meses" class="label-meses">Selecciona un mes:</label>
 
-                <div class="selector-meses">
+                <select id="meses" class="selector-meses">
+                    <option value="enero">Enero 2026</option>
+                    <option value="febrero">Febrero 2026</option>
+                    <option value="marzo">Marzo 2026</option>
+                    <option value="abril">Abril 2026</option>
+                    <option value="mayo">Mayo 2026</option>
+                    <option value="junio">Junio 2026</option>
+                    <option value="julio">Julio 2026</option>
+                    <option value="agosto">Agosto 2026</option>
+                    <option value="septiembre">Septiembre 2026</option>
+                    <option value="octubre">Octubre 2026</option>
+                    <option value="noviembre">Noviembre 2026</option>
+                    <option value="diciembre">Diciembre 2026</option>
+                </select>
 
-                    <input type="radio" name="mes" id="enero" checked>
-                    <input type="radio" name="mes" id="febrero">
-                    <input type="radio" name="mes" id="marzo">
-                    <input type="radio" name="mes" id="abril">
-                    <input type="radio" name="mes" id="mayo">
-                    <input type="radio" name="mes" id="junio">
-                    <input type="radio" name="mes" id="julio">
-                    <input type="radio" name="mes" id="agosto">
-                    <input type="radio" name="mes" id="septiembre">
-                    <input type="radio" name="mes" id="octubre">
-                    <input type="radio" name="mes" id="noviembre">
-                    <input type="radio" name="mes" id="diciembre">
-
-                    <div class="dropdown-meses">
-                        <label for="enero">Enero 2026</label>
-                        <label for="febrero">Febrero 2026</label>
-                        <label for="marzo">Marzo 2026</label>
-                        <label for="abril">Abril 2026</label>
-                        <label for="mayo">Mayo 2026</label>
-                        <label for="junio">Junio 2026</label>
-                        <label for="julio">Julio 2026</label>
-                        <label for="agosto">Agosto 2026</label>
-                        <label for="septiembre">Septiembre 2026</label>
-                        <label for="octubre">Octubre 2026</label>
-                        <label for="noviembre">Noviembre 2026</label>
-                        <label for="diciembre">Diciembre 2026</label>
-                    </div>
-
-                    <div class="spinner-contenedor">
-                        <div class="spinner"></div>
-                            <p class="texto-carga">Cargando actividades...</p>
-                        </div>
-                    </div>
-
-                    <div class="contenido-mes">
-                        <p>No hay actividades</p>
-                    </div>
-
+                <div class="spinner-contenedor">
+                    <div class="spinner"></div>
+                    <p class="texto-carga">Cargando actividades...</p>
                 </div>
 
-
+                <div class="contenido-mes">
+                    <p>No hay actividades</p>
+                </div>
             </article>
         </div>
     </main>

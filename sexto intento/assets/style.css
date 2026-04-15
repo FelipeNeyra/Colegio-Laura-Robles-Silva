@@ -281,30 +281,21 @@ header {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* DROPDOWN GALERÍA */
-
-.selector-meses input {
-    display: none;
-}
-
-.dropdown-meses {
-    border: 1px solid var(--borde-lateral);
-    border-radius: 8px;
-    overflow: hidden;
-    max-width: 300px;
-    margin-top: 1rem;
-}
-
-.dropdown-meses label {
+.label-meses {
     display: block;
-    padding: 0.6rem;
-    cursor: pointer;
-    background: white;
-    border-bottom: 1px solid var(--borde-lateral);
-    transition: 0.2s;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: var(--color-rojo);
 }
 
-.dropdown-meses label:hover {
-    background-color: #f0f0f0;
+.selector-meses {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--borde-lateral);
+    width: 100%;
+    max-width: 300px;
 }
 
 /* Caja de contenido */
@@ -321,22 +312,6 @@ header {
     display: none;
     margin-top: 1rem;
     text-align: center;
-}
-
-/* Activación del spinner */
-#febrero:checked ~ .spinner-contenedor,
-#marzo:checked ~ .spinner-contenedor,
-#abril:checked ~ .spinner-contenedor,
-#mayo:checked ~ .spinner-contenedor,
-#junio:checked ~ .spinner-contenedor,
-#julio:checked ~ .spinner-contenedor,
-#agosto:checked ~ .spinner-contenedor,
-#septiembre:checked ~ .spinner-contenedor,
-#octubre:checked ~ .spinner-contenedor,
-#noviembre:checked ~ .spinner-contenedor,
-#diciembre:checked ~ .spinner-contenedor {
-    display: block;
-    animation: desaparecer 2s forwards;
 }
 
 /* Rueda */
@@ -362,6 +337,11 @@ header {
     color: var(--texto-secundario);
 }
 
+/* Mostrar spinner al interactuar */
+.selector-meses:focus + .spinner-contenedor {
+    display: block;
+    animation: desaparecer 2s forwards;
+}
 
 /* Animación de desaparición */
 @keyframes desaparecer {
