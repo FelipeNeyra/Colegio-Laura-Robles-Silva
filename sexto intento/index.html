@@ -61,8 +61,8 @@
         <img src="banner1.jpg" alt="Patio de la escuela">
 
         <div class="banner-contenido">
-            <h1>Optimiza el uso de la Sala de Computación</h1>
-            <p>Gestiona horarios de manera clara, rápida y sin errores para todos los cursos.</p>
+            <h1>Descubre todo lo que tenemos para ofrecer en nuestro establecimiento</h1>
+            <p>Educación básica, integración estudiantil y especialidades dentro de la docencia.</p>
         <a href="#" class="btn-banner">Ver horarios</a>
         </div>
     </section>
@@ -77,7 +77,11 @@
         <div class="area-textos">
             <article id="sec-sobre" class="texto-lectura seccion-activa">
                 <h2>Sobre el Colegio</h2>
-                <p>Aquí iría un texto con la información del colegio, cursos, horarios, etc.</p>
+                <p>En la búsqueda de un establecimiento educativo que ofrezca no solo excelencia académica, 
+                    sino también un profundo compromiso con la diversidad y la integración, la Escuela Laura 
+                    Robles Silva de Copiapó emerge como un referente fundamental para las familias. Como 
+                    establecimiento de educación básica, la escuela se dedica a sentar los cimientos educativos 
+                    durante la niñez.</p>
             </article>
 
             <article id="sec-comunicados" class="texto-lectura seccion-oculta">
@@ -87,9 +91,52 @@
 
             <article id="sec-galeria" class="texto-lectura seccion-oculta">
                 <h2>Galería de Actividades</h2>
-                <div id="contenedor-galeria-compañero">
-                    <p>Contenido de galería en desarrollo...</p>
+                
+                <label for="meses" class="label-meses">Selecciona un mes:</label>
+
+                <div class="selector-meses">
+
+                    <input type="radio" name="mes" id="enero" checked>
+                    <input type="radio" name="mes" id="febrero">
+                    <input type="radio" name="mes" id="marzo">
+                    <input type="radio" name="mes" id="abril">
+                    <input type="radio" name="mes" id="mayo">
+                    <input type="radio" name="mes" id="junio">
+                    <input type="radio" name="mes" id="julio">
+                    <input type="radio" name="mes" id="agosto">
+                    <input type="radio" name="mes" id="septiembre">
+                    <input type="radio" name="mes" id="octubre">
+                    <input type="radio" name="mes" id="noviembre">
+                    <input type="radio" name="mes" id="diciembre">
+
+                    <div class="dropdown-meses">
+                        <label for="enero">Enero 2026</label>
+                        <label for="febrero">Febrero 2026</label>
+                        <label for="marzo">Marzo 2026</label>
+                        <label for="abril">Abril 2026</label>
+                        <label for="mayo">Mayo 2026</label>
+                        <label for="junio">Junio 2026</label>
+                        <label for="julio">Julio 2026</label>
+                        <label for="agosto">Agosto 2026</label>
+                        <label for="septiembre">Septiembre 2026</label>
+                        <label for="octubre">Octubre 2026</label>
+                        <label for="noviembre">Noviembre 2026</label>
+                        <label for="diciembre">Diciembre 2026</label>
+                    </div>
+
+                    <div class="spinner-contenedor">
+                        <div class="spinner"></div>
+                            <p class="texto-carga">Cargando actividades...</p>
+                        </div>
+                    </div>
+
+                    <div class="contenido-mes">
+                        <p>No hay actividades</p>
+                    </div>
+
                 </div>
+
+
             </article>
         </div>
     </main>
