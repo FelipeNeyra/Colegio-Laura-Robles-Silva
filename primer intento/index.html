@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="claro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela Laura Robles Silva</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo-y-titulos">
+            <div class="logo-placeholder">Escudo</div>
+            <div class="titulos">
+                <h1>Escuela Laura Robles Silva</h1>
+                <p>Copiapó, Chile · Fundado el 1860</p>
+            </div>
+        </div>
+
+        <nav class="navegacion">
+            <a href="#lectura" class="nav-link activo">
+                <span class="icono">🏠</span> Inicio
+            </a>
+            <a href="#" class="nav-link">
+                <span class="icono">💻</span> Gestor
+            </a>
+            <a href="#" class="nav-link">
+                <span class="icono">📞</span> Contacto
+            </a>
+            <button id="btn-accesibilidad" class="nav-link btn-limpio">
+                <span class="icono">♿</span> Accesibilidad
+            </button>
+        </nav>
+
+        <div class="usuario">
+            <span class="nombre-usuario">Constanza Ramírez</span>
+            <div class="avatar">CR</div>
+        </div>
+    </header>
+
+    <section class="banner-imagen">
+        <img src="https://via.placeholder.com/1200x400/808080/FFFFFF?text=Imagen+del+Colegio" alt="Patio de la escuela Laura Robles Silva">
+    </section>
+
+    <main id="lectura" class="contenido-principal">
+        <aside class="menu-lateral">
+            <a href="#" class="item-lateral activo">Sobre el Colegio</a>
+            <a href="#" class="item-lateral">Comunicados</a>
+        </aside>
+
+        <article class="texto-lectura">
+            <h2>Sobre el Colegio</h2>
+            <p>Aquí iría un texto con la información del colegio, cursos, horarios, etc.</p>
+        </article>
+    </main>
+
+    <script>
+        // Seleccionamos el botón y la etiqueta html principal
+        const botonAccesibilidad = document.getElementById('btn-accesibilidad');
+        const elementoHtml = document.documentElement;
+
+        // Escuchamos cuando se hace clic en el botón
+        botonAccesibilidad.addEventListener('click', () => {
+            // Revisamos qué tema está activo y lo cambiamos al contrario
+            const temaActual = elementoHtml.getAttribute('data-theme');
+            if (temaActual === 'claro') {
+                elementoHtml.setAttribute('data-theme', 'oscuro');
+            } else {
+                elementoHtml.setAttribute('data-theme', 'claro');
+            }
+        });
+    </script>
+</body>
+</html>
