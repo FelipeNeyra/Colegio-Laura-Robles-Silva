@@ -298,6 +298,57 @@ header {
     max-width: 300px;
 }
 
+.spinner-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    overflow: hidden;
+    color: var(--texto-principal);
+    opacity: 0;
+    max-height: 0;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 4px solid rgba(0, 0, 0, 0.15);
+    border-top-color: var(--color-rojo);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.texto-carga {
+    font-size: 1rem;
+}
+
+.texto-lectura.seccion-activa .spinner-contenedor {
+    animation: show-spinner 1.2s ease forwards;
+}
+
+.texto-lectura.seccion-activa .contenido-mes {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    animation: show-content 0.5s ease forwards 1.2s;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes show-spinner {
+    0% { opacity: 0; max-height: 0; }
+    10%, 80% { opacity: 1; max-height: 100px; }
+    100% { opacity: 0; max-height: 0; }
+}
+
+@keyframes show-content {
+    0% { opacity: 0; max-height: 0; }
+    100% { opacity: 1; max-height: 500px; }
+}
+
 /* Caja de contenido */
 .contenido-mes {
     margin-top: 1.5rem;
