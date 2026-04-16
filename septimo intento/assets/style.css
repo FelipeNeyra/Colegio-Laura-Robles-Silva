@@ -308,17 +308,24 @@ header {
 }
 
 /* SECCIÓN SERVICIOS */
-.seccion-servicios h2 {
-    color: var(--color-rojo);
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
+.seccion-servicios {
+    width: 100%;
+    padding: 3rem 0;
+    background-color: #000000;
+    color: #ffffff;
 }
 
-.seccion-servicios {
+.seccion-servicios > * {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem;
+    padding: 0 1.5rem;
+}
+
+.seccion-servicios h2 {
+    color: var(--color-rojo);
+    font-size: 3.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 /* SERVICIOS FORMATO HORIZONTAL */
@@ -349,6 +356,7 @@ header {
 .servicio-texto h3 {
     color: var(--color-rojo);
     margin-bottom: 0.5rem;
+    font-size: 1.8rem;
 }
 
 .servicio-texto p {
