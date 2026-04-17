@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="claro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela Laura Robles Silva</title>
+    <link rel="icon" type="image/png" href="logoLRS.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="top"> 
+    
+    <input type="checkbox" id="toggle-oscuro" class="input-oculto">
+
+    <header>
+        <div class="logo-y-titulos">
+            <img src="logoLRS.png" alt="Escudo Escuela Laura Robles Silva" class="logo-escuela">
+            <div class="titulos">
+                <h1>Escuela Laura Robles Silva</h1>
+                <p>Copiapó, Chile · Fundado en 1860</p>
+            </div>
+        </div>
+
+        <nav class="navegacion">
+            <a href="#top" class="nav-link" id="nav-inicio">
+                <img src="logo_inicio.png" alt="Inicio" class="icono-img"> Inicio
+            </a>
+            <a href="#servicios" class="nav-link">
+                <img src="logo_gestor.png" alt="Gestor" class="icono-img"> Gestor
+            </a>
+            <a href="#contacto" class="nav-link" id="nav-contacto">
+                <img src="logo_contacto.png" alt="Contacto" class="icono-img"> Contacto
+            </a>
+            
+            <div class="dropdown">
+                <div tabindex="0" class="nav-link btn-limpio">
+                    <img src="logo_accesibilidad.png" alt="Accesibilidad" class="icono-img"> Accesibilidad
+                </div>
+                <div class="dropdown-contenido">
+                    <label for="toggle-oscuro" class="dropdown-item" style="text-align: center;">🌓 Alternar Modo Oscuro</label>
+                </div>
+            </div>
+        </nav>
+
+        <div class="usuario">
+            <a href="#" class="btn-login">
+                <img src="logo_accesibilidad.png" alt="Icono Login" class="icono-login">
+                <span>Iniciar Sesión</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="banner banner-imagen">
+        <img src="banner1.jpg" alt="Patio de la escuela">
+
+        <div class="banner-contenido">
+            <h1>Descubre todo lo que tenemos para ofrecer en nuestro establecimiento</h1>
+            <p>Educación básica, integración estudiantil y especialidades dentro de la docencia.</p>
+        <a href="#servicios" class="btn-banner">Informate aquí</a>
+        </div>
+    </section>
+
+    <main id="lectura" class="contenido-principal">
+        
+        <input type="radio" name="tabs" id="tab-sobre" class="input-oculto" checked>
+        <input type="radio" name="tabs" id="tab-comunicados" class="input-oculto">
+        <input type="radio" name="tabs" id="tab-galeria" class="input-oculto">
+
+        <aside class="menu-lateral">
+            <label for="tab-sobre" class="item-lateral" id="label-sobre">Sobre el Colegio</label>
+            <label for="tab-comunicados" class="item-lateral" id="label-comunicados">Comunicados</label>
+            <label for="tab-galeria" class="item-lateral" id="label-galeria">Actividades</label>
+        </aside>
+
+        <div class="area-textos">
+            <article id="sec-sobre" class="texto-lectura">
+                <h2>Sobre el Colegio</h2>
+                <p>En la búsqueda de un establecimiento educativo que ofrezca no solo excelencia académica, 
+                    sino también un profundo compromiso con la diversidad y la integración, la Escuela Laura 
+                    Robles Silva de Copiapó emerge como un referente fundamental para las familias. Como 
+                    establecimiento de educación básica, la escuela se dedica a sentar los cimientos educativos 
+                    durante la niñez.</p>
+            </article>
+
+            <article id="sec-comunicados" class="texto-lectura">
+                <h2>Comunicados</h2>
+                <p>Bienvenido a la sección de comunicados oficiales. Aquí se publicarán las noticias de la Escuela Laura Robles Silva, fechas de reuniones y avisos importantes.</p>
+            </article>
+
+            <article id="sec-galeria" class="texto-lectura">
+                <h2>Galería de Actividades</h2>
+
+                <label for="meses" class="label-meses">Selecciona un mes:</label>
+
+                <select id="meses" class="selector-meses">
+                    <option value="enero">Enero 2026</option>
+                    <option value="febrero">Febrero 2026</option>
+                    <option value="marzo">Marzo 2026</option>
+                    <option value="abril">Abril 2026</option>
+                    <option value="mayo">Mayo 2026</option>
+                    <option value="junio">Junio 2026</option>
+                    <option value="julio">Julio 2026</option>
+                    <option value="agosto">Agosto 2026</option>
+                    <option value="septiembre">Septiembre 2026</option>
+                    <option value="octubre">Octubre 2026</option>
+                    <option value="noviembre">Noviembre 2026</option>
+                    <option value="diciembre">Diciembre 2026</option>
+                </select>
+
+                <div class="spinner-contenedor">
+                    <div class="spinner"></div>
+                    <p class="texto-carga">Cargando actividades...</p>
+                </div>
+
+                <div class="contenido-mes">
+                    <p>No hay actividades registradas para este mes.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <section id="servicios" class="seccion-servicios">
+
+        <h2>Nuestros Servicios</h2>
+
+        <article class="servicio-horizontal">
+            <img src="educacion.png" alt="Estudiantes en sala de clases">
+
+            <div class="servicio-texto">
+                <h3>Educación Básica</h3>
+                <p>Formación integral en asignaturas fundamentales como Lenguaje, Matemática, Ciencias e Historia, promoviendo el desarrollo académico y personal de los estudiantes.</p>
+            </div>
+        </article>
+
+        <article class="servicio-horizontal">
+            <img src="integracion.png" alt="Estudiantes en inclusión escolar">
+
+            <div class="servicio-texto">
+                <h3>Programa de Integración Escolar (PIE)</h3>
+                <p>La escuela promueve una educación inclusiva mediante el Programa de Integración Escolar, apoyando diversas necesidades educativas especiales como las siguientes:.</p>
+
+                <ul>
+                    <li>Discapacidad Intelectual</li>
+                    <li>Dificultades de Aprendizaje</li>
+                    <li>TDA, TEL y TEA</li>
+                    <li>Discapacidad Múltiple</li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="servicio-horizontal">
+            <img src="computacion.jpeg" alt="Sala de computación">
+
+            <div class="servicio-texto">
+                <h3>Gestión de Sala de Computación</h3>
+                <p>Plataforma digital para organizar horarios y optimizar el uso de la sala de computación, evitando conflictos entre cursos mediante las siguientes características:</p>
+
+                <ul>
+                    <li>Registro de horarios</li>
+                    <li>Visualización de disponibilidad</li>
+                    <li>Normativa de uso responsable</li>
+                </ul>
+            </div>
+        </article>
+
+    </section>
+
+    <footer id="contacto" class="pie-pagina">
+        <div class="footer-contenedor">
+            <div class="footer-info">
+                <h3>Contacto</h3>
+                <p>📍 <a href="https://maps.app.goo.gl/..." target="_blank">Dirección: Corcovado 1375</a></p>
+                <p>📞 <a href="tel:+56522243401">Teléfono: (52) 224 3401</a></p>
+                <p>✉️ <a href="mailto:lauraroblessilva@gmail.com">Correo: lauraroblessilva@gmail.com</a></p>
+            </div>
+            <div class="footer-social">
+                <h3>Síguenos</h3>
+                <p>🔵 <a href="https://www.facebook.com/EscuelaLauraRoblesSilva" target="_blank">Facebook: Escuela Laura Robles Silva</a></p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2026 Escuela Laura Robles Silva. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    </body>
+</html>
