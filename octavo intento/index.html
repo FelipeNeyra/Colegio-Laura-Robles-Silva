@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="claro">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escuela Laura Robles Silva</title>
     <link rel="icon" type="image/png" href="logoLRS.png">
     <link rel="stylesheet" href="assets/style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body id="top"> 
     
-    <input type="checkbox" id="toggle-oscuro" class="input-oculto">
+    <input type="radio" name="tema" id="theme-claro" class="input-oculto" checked>
+    <input type="radio" name="tema" id="theme-oscuro" class="input-oculto">
+
+    <input type="radio" name="tamano-letra" id="font-normal" class="input-oculto" checked>
+    <input type="radio" name="tamano-letra" id="font-grande" class="input-oculto">
 
     <header>
         <div class="logo-y-titulos">
@@ -24,46 +29,52 @@
         </div>
 
         <nav class="navegacion">
-            <a href="#top" class="nav-link" id="nav-inicio">
+            <a href="#top" class="nav-link">
                 <img src="logo_inicio.png" alt="Inicio" class="icono-img"> Inicio
             </a>
             <a href="#servicios" class="nav-link">
-                <img src="logo_gestor.png" alt="Gestor" class="icono-img"> Gestor
+                <img src="logo_gestor.png" alt="Servicios" class="icono-img"> Servicios
             </a>
-            <a href="#contacto" class="nav-link" id="nav-contacto">
+            <a href="#contacto" class="nav-link">
                 <img src="logo_contacto.png" alt="Contacto" class="icono-img"> Contacto
             </a>
             
             <div class="dropdown">
-                <div tabindex="0" class="nav-link btn-limpio">
+                <input type="checkbox" id="menu-toggle" class="input-oculto">
+                
+                <label for="menu-toggle" class="nav-link btn-limpio" style="position: relative; z-index: 11;">
                     <img src="logo_accesibilidad.png" alt="Accesibilidad" class="icono-img"> Accesibilidad
-                </div>
+                </label>
+                
+                <label for="menu-toggle" class="fondo-cierra-menu"></label>
+                
                 <div class="dropdown-contenido">
-                    <label for="toggle-oscuro" class="dropdown-item" style="text-align: center;">🌓 Alternar Modo Oscuro</label>
+                    <p class="dropdown-titulo">Temas</p>
+                    <label for="theme-claro" class="dropdown-item">☀️ Modo Claro</label>
+                    <label for="theme-oscuro" class="dropdown-item">🌙 Modo Oscuro</label>
+                    <hr class="dropdown-divider">
+                    <p class="dropdown-titulo">Accesibilidad</p>
+                    <label for="font-normal" class="dropdown-item">A Letra Normal</label>
+                    <label for="font-grande" class="dropdown-item">A+ Letra Grande</label>
                 </div>
             </div>
         </nav>
 
         <div class="usuario">
-            <a href="#" class="btn-login">
-                <img src="logo_accesibilidad.png" alt="Icono Login" class="icono-login">
-                <span>Iniciar Sesión</span>
-            </a>
+            <a href="#" class="btn-login">Iniciar Sesión</a>
         </div>
     </header>
 
     <section class="banner banner-imagen">
         <img src="banner1.jpg" alt="Patio de la escuela">
-
         <div class="banner-contenido">
-            <h1>Descubre todo lo que tenemos para ofrecer en nuestro establecimiento</h1>
-            <p>Educación básica, integración estudiantil y especialidades dentro de la docencia.</p>
-        <a href="#servicios" class="btn-banner">Informate aquí</a>
+            <h1>Descubre todo lo que tenemos para ofrecer</h1>
+            <p>Educación básica e integración estudiantil para el futuro de nuestros niños.</p>
+            <a href="#servicios" class="btn-banner">Infórmate aquí</a>
         </div>
     </section>
 
     <main id="lectura" class="contenido-principal">
-        
         <input type="radio" name="tabs" id="tab-sobre" class="input-oculto" checked>
         <input type="radio" name="tabs" id="tab-comunicados" class="input-oculto">
         <input type="radio" name="tabs" id="tab-galeria" class="input-oculto">
@@ -77,11 +88,7 @@
         <div class="area-textos">
             <article id="sec-sobre" class="texto-lectura">
                 <h2>Sobre el Colegio</h2>
-                <p>En la búsqueda de un establecimiento educativo que ofrezca no solo excelencia académica, 
-                    sino también un profundo compromiso con la diversidad y la integración, la Escuela Laura 
-                    Robles Silva de Copiapó emerge como un referente fundamental para las familias. Como 
-                    establecimiento de educación básica, la escuela se dedica a sentar los cimientos educativos 
-                    durante la niñez.</p>
+                <p>La Escuela Laura Robles Silva de Copiapó se dedica a cimentar los valores educativos durante la niñez, ofreciendo excelencia académica y compromiso con la diversidad.</p>
             </article>
 
             <article id="sec-comunicados" class="texto-lectura">
@@ -91,99 +98,51 @@
 
             <article id="sec-galeria" class="texto-lectura">
                 <h2>Galería de Actividades</h2>
-
-                <label for="meses" class="label-meses">Selecciona un mes:</label>
-
-                <select id="meses" class="selector-meses">
-                    <option value="enero">Enero 2026</option>
-                    <option value="febrero">Febrero 2026</option>
-                    <option value="marzo">Marzo 2026</option>
-                    <option value="abril">Abril 2026</option>
-                    <option value="mayo">Mayo 2026</option>
-                    <option value="junio">Junio 2026</option>
-                    <option value="julio">Julio 2026</option>
-                    <option value="agosto">Agosto 2026</option>
-                    <option value="septiembre">Septiembre 2026</option>
-                    <option value="octubre">Octubre 2026</option>
-                    <option value="noviembre">Noviembre 2026</option>
-                    <option value="diciembre">Diciembre 2026</option>
-                </select>
-
                 <div class="spinner-contenedor">
                     <div class="spinner"></div>
-                    <p class="texto-carga">Cargando actividades...</p>
+                    <p>Cargando actividades del mes...</p>
                 </div>
-
                 <div class="contenido-mes">
-                    <p>No hay actividades registradas para este mes.</p>
+                    <p>Próximamente fotos del período escolar 2026.</p>
                 </div>
             </article>
         </div>
     </main>
 
     <section id="servicios" class="seccion-servicios">
-
         <h2>Nuestros Servicios</h2>
-
         <article class="servicio-horizontal">
-            <img src="educacion.png" alt="Estudiantes en sala de clases">
-
+            <img src="educacion.png" alt="Sala de clases">
             <div class="servicio-texto">
                 <h3>Educación Básica</h3>
-                <p>Formación integral en asignaturas fundamentales como Lenguaje, Matemática, Ciencias e Historia, promoviendo el desarrollo académico y personal de los estudiantes.</p>
+                <p>Formación integral promoviendo el desarrollo académico y personal.</p>
             </div>
         </article>
-
         <article class="servicio-horizontal">
-            <img src="integracion.png" alt="Estudiantes en inclusión escolar">
-
+            <img src="integracion.png" alt="Integración escolar">
             <div class="servicio-texto">
-                <h3>Programa de Integración Escolar (PIE)</h3>
-                <p>La escuela promueve una educación inclusiva mediante el Programa de Integración Escolar, apoyando diversas necesidades educativas especiales como las siguientes:.</p>
-
-                <ul>
-                    <li>Discapacidad Intelectual</li>
-                    <li>Dificultades de Aprendizaje</li>
-                    <li>TDA, TEL y TEA</li>
-                    <li>Discapacidad Múltiple</li>
-                </ul>
+                <h3>Programa PIE</h3>
+                <p>Educación inclusiva apoyando diversas necesidades educativas especiales.</p>
             </div>
         </article>
-
-        <article class="servicio-horizontal">
-            <img src="computacion.jpeg" alt="Sala de computación">
-
-            <div class="servicio-texto">
-                <h3>Gestión de Sala de Computación</h3>
-                <p>Plataforma digital para organizar horarios y optimizar el uso de la sala de computación, evitando conflictos entre cursos mediante las siguientes características:</p>
-
-                <ul>
-                    <li>Registro de horarios</li>
-                    <li>Visualización de disponibilidad</li>
-                    <li>Normativa de uso responsable</li>
-                </ul>
-            </div>
-        </article>
-
     </section>
 
     <footer id="contacto" class="pie-pagina">
         <div class="footer-contenedor">
             <div class="footer-info">
                 <h3>Contacto</h3>
-                <p>📍 <a href="https://maps.app.goo.gl/..." target="_blank">Dirección: Corcovado 1375</a></p>
-                <p>📞 <a href="tel:+56522243401">Teléfono: (52) 224 3401</a></p>
-                <p>✉️ <a href="mailto:lauraroblessilva@gmail.com">Correo: lauraroblessilva@gmail.com</a></p>
+                <p>📍 Corcovado 1375, Copiapó</p>
+                <p>📞 (52) 224 3401</p>
+                <p>✉️ lauraroblessilva@gmail.com</p>
             </div>
             <div class="footer-social">
                 <h3>Síguenos</h3>
-                <p>🔵 <a href="https://www.facebook.com/EscuelaLauraRoblesSilva" target="_blank">Facebook: Escuela Laura Robles Silva</a></p>
+                <p>🔵 Escuela Laura Robles Silva</p>
             </div>
         </div>
         <div class="footer-copyright">
             <p>© 2026 Escuela Laura Robles Silva. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    </body>
+</body>
 </html>

@@ -1,5 +1,5 @@
 /* =========================================
-   VARIABLES
+   VARIABLES Y TEMAS
    ========================================= */
 :root {
     --color-rojo: #db353d;
@@ -9,50 +9,40 @@
     --borde-lateral: #bbbbbb;
 }
 
-/* HACK CSS: Control de Modo Oscuro */
-body:has(#toggle-oscuro:checked) {
+body:has(#theme-oscuro:checked) {
     --fondo-sitio: #222222;
     --texto-principal: #ffffff;
     --texto-secundario: #cccccc;
     --borde-lateral: #777777;
 }
 
-.input-oculto {
-    display: none;
-}
+.input-oculto { display: none; }
 
 /* =========================================
    BASE
    ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
     background-color: var(--fondo-sitio);
     color: var(--texto-principal);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-family: 'Segoe UI', sans-serif; 
     transition: background-color 0.3s ease;
 }
 
-h1, h2, h3, .nav-link, .item-lateral, .btn-login {
-    font-family: 'League Spartan', sans-serif;
-}
+body:has(#font-grande:checked) p { font-size: 1.4rem !important; }
+body:has(#font-grande:checked) h2 { font-size: 3.5rem !important; }
+
+h1, h2, h3, .nav-link, .item-lateral, .btn-login { font-family: 'League Spartan', sans-serif; }
 
 /* =========================================
-   HEADER (STICKY)
+   HEADER Y NAVEGACIÓN
    ========================================= */
 header {
     display: flex;
     align-items: center;
-    padding: 1rem 3rem;
-    flex-wrap: wrap;
+    padding: 1.5rem 3rem;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -60,376 +50,96 @@ header {
     border-bottom: 1px solid var(--borde-lateral);
 }
 
-.logo-y-titulos {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-right: auto;
-}
-
-.logo-escuela {
-    height: 70px;
-    width: auto;
-}
-
+.logo-y-titulos { display: flex; align-items: center; gap: 1rem; margin-right: auto; }
+.logo-escuela { height: 70px; }
 .titulos h1 { color: var(--color-rojo); font-size: 1.5rem; }
-.titulos p { color: var(--color-rojo); font-size: 0.9rem; font-weight: bold; }
 
-.navegacion { 
-    display: flex; 
-    gap: 2rem; 
-    align-items: center; 
-    margin-right: 3rem; 
+.navegacion { display: flex; gap: 2rem; align-items: center; }
+.nav-link { 
+    text-decoration: none; color: var(--color-rojo); 
+    display: flex; flex-direction: column; align-items: center;
+    font-weight: 600; cursor: pointer; background: none; border: none;
 }
-
-.nav-link {
-    text-decoration: none;
-    color: var(--color-rojo);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding-bottom: 5px;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-    border-bottom: 2px solid var(--color-rojo);
-}
-
 .icono-img { height: 25px; margin-bottom: 5px; }
 
-.btn-limpio { background: none; border: none; outline: none !important; }
-
-/* Dropdown Accesibilidad adaptado a CSS puro */
-.dropdown { position: relative; cursor: pointer; }
+/* =========================================
+   DROPDOWN ACCESIBILIDAD
+   ========================================= */
+.dropdown { position: relative; }
 .dropdown-contenido {
-    display: none;
-    position: absolute;
+    display: none; position: absolute;
     background-color: var(--fondo-sitio);
-    min-width: 180px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px; top: 100%; right: 0; margin-top: 10px;
+    padding: 10px; border: 1px solid var(--borde-lateral);
+    z-index: 100;
+}
+
+#menu-toggle:checked ~ .dropdown-contenido { display: flex; flex-direction: column; }
+
+/* Capa invisible para cerrar el menú */
+.fondo-cierra-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
     z-index: 10;
-    border-radius: 8px;
-    top: 100%;
-    right: 0;
-    border: 1px solid var(--borde-lateral);
-    margin-top: 10px;
-    padding: 10px 0;
 }
+#menu-toggle:checked ~ .fondo-cierra-menu { display: block; }
 
-/* El menú se abre al pasar el ratón */
-.dropdown:hover .dropdown-contenido { display: flex; flex-direction: column; }
+.dropdown-titulo { font-size: 0.8rem; color: var(--texto-secundario); margin: 5px 0; text-transform: uppercase; }
+.dropdown-divider { border: 0; border-top: 1px solid var(--borde-lateral); margin: 8px 0; }
+.dropdown-item { padding: 8px; cursor: pointer; display: block; }
+.dropdown-item:hover { color: var(--color-rojo); }
 
-.dropdown-item {
-    color: var(--texto-principal);
-    padding: 12px 16px;
-    background: none; border: none;
-    text-align: left; cursor: pointer;
-    display: block;
-    width: 100%;
-}
-.dropdown-item:hover { background-color: var(--borde-lateral); color: var(--color-rojo); }
-
-/* Botón Login */
-.usuario { display: flex; align-items: center; gap: 1rem; }
+/* =========================================
+   BOTÓN LOGIN (CORREGIDO)
+   ========================================= */
+.usuario { margin-left: 2rem; }
 .btn-login {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: inline-block;
     text-decoration: none;
     color: var(--color-rojo);
     font-weight: 600;
     border: 2px solid var(--color-rojo);
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 8px;
     transition: all 0.3s ease;
+    background: transparent;
 }
 .btn-login:hover { background-color: var(--color-rojo); color: white; }
-.icono-login { height: 20px; transition: filter 0.3s ease; }
-.btn-login:hover .icono-login { filter: brightness(0) invert(1); }
 
 /* =========================================
-   HERO / BANNER MEJORADO
+   BANNER Y CONTENIDO
    ========================================= */
-.banner {
-    position: relative;
-    width: 100%;
-    height: 400px;
-}
+.banner { position: relative; width: 100%; height: 400px; overflow: hidden; }
+.banner img { width: 100%; height: 100%; object-fit: cover; }
+.banner::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+.banner-contenido { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; }
+.btn-banner { display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background-color: var(--color-rojo); color: white; text-decoration: none; border-radius: 5px; }
 
-.banner-imagen img { width: 100%; height: 400px; object-fit: cover; display: block; }
+.contenido-principal { display: flex; padding: 3rem; gap: 4rem; max-width: 1200px; margin: 0 auto; }
+.menu-lateral { width: 250px; display: flex; flex-direction: column; }
+.item-lateral { padding: 1rem; border-bottom: 2px solid var(--borde-lateral); color: var(--texto-secundario); cursor: pointer; font-weight: 600; text-align: left; width: 100%; display: block; }
 
-.banner::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.banner-contenido {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #fff;
-    z-index: 2;
-    padding: 1rem;
-}
-
-.banner-contenido h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-.banner-contenido p { font-size: 1.2rem; margin-bottom: 1.5rem; }
-
-.btn-banner {
-    background-color: var(--color-rojo);
-    color: #fff;
-    padding: 0.8rem 1.5rem;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn-banner:hover { background-color: #a8282f; }
-
-/* =========================================
-   CONTENIDO PRINCIPAL Y PESTAÑAS CSS
-   ========================================= */
-.contenido-principal {
-    display: flex;
-    padding: 3rem;
-    gap: 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: flex-start; 
-}
-
-.menu-lateral {
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-}
-
-.item-lateral {
-    background: transparent;
-    border: none; 
-    border-bottom: 2px solid var(--borde-lateral);
-    border-top: 2px solid transparent;
-    color: var(--texto-secundario);
-    padding: 1rem 0; 
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-align: left;
-    cursor: pointer;
-    width: 100%;
-    display: block; /* Importante para que el label tome todo el espacio */
-}
-
-/* Estilo para los botones seleccionados */
-#tab-sobre:checked ~ .menu-lateral #label-sobre,
-#tab-comunicados:checked ~ .menu-lateral #label-comunicados,
-#tab-galeria:checked ~ .menu-lateral #label-galeria {
-    color: var(--color-rojo);
-    border-top: 2px solid var(--borde-lateral);
-}
-
-.area-textos { flex-grow: 1; }
-
-.texto-lectura { 
-    display: none; /* Ocultar todos por defecto */
-}
-
-/* Mostrar la sección según el botón presionado */
+.texto-lectura { display: none; }
 #tab-sobre:checked ~ .area-textos #sec-sobre,
 #tab-comunicados:checked ~ .area-textos #sec-comunicados,
-#tab-galeria:checked ~ .area-textos #sec-galeria {
-    display: block;
-    animation: fadeIn 0.4s ease forwards;
-}
+#tab-galeria:checked ~ .area-textos #sec-galeria { display: block; animation: fadeIn 0.5s; }
 
-.texto-lectura h2 {
-    color: var(--color-rojo);
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    line-height: 1;
-}
-.texto-lectura p { font-size: 1.2rem; line-height: 1.6; }
+#tab-sobre:checked ~ .menu-lateral #label-sobre,
+#tab-comunicados:checked ~ .menu-lateral #label-comunicados,
+#tab-galeria:checked ~ .menu-lateral #label-galeria { color: var(--color-rojo); border-top: 2px solid var(--borde-lateral); }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* =========================================
-   GALERÍA Y ANIMACIONES CSS DE TUS COMPAÑEROS
-   ========================================= */
-.label-meses {
-    display: block;
-    margin-top: 1rem;
-    font-weight: bold;
-    color: var(--color-rojo);
-}
+.seccion-servicios { background-color: #111; color: white; padding: 4rem 2rem; text-align: center; }
+.servicio-horizontal { display: flex; align-items: center; gap: 2rem; margin: 2rem auto; max-width: 900px; text-align: left; }
+.servicio-horizontal img { width: 200px; border-radius: 10px; }
 
-.selector-meses {
-    margin-top: 0.5rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid var(--borde-lateral);
-    width: 100%;
-    max-width: 300px;
-}
-
-.spinner-contenedor {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    overflow: hidden;
-    color: var(--texto-principal);
-    opacity: 0;
-    max-height: 0;
-}
-
-.spinner {
-    width: 24px;
-    height: 24px;
-    border: 4px solid rgba(0, 0, 0, 0.15);
-    border-top-color: var(--color-rojo);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-.texto-carga { font-size: 1rem; }
-
-/* Adaptación de la animación de tus compañeros al formato CSS puro */
-#tab-galeria:checked ~ .area-textos #sec-galeria .spinner-contenedor {
-    animation: show-spinner 1.2s ease forwards;
-}
-
-#tab-galeria:checked ~ .area-textos #sec-galeria .contenido-mes {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    animation: show-content 0.5s ease forwards 1.2s;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-@keyframes show-spinner {
-    0% { opacity: 0; max-height: 0; }
-    10%, 80% { opacity: 1; max-height: 100px; }
-    100% { opacity: 0; max-height: 0; }
-}
-
-@keyframes show-content {
-    0% { opacity: 0; max-height: 0; }
-    100% { opacity: 1; max-height: 500px; }
-}
-
-.contenido-mes {
-    margin-top: 1.5rem;
-    padding: 1.5rem;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-}
-
-/* =========================================
-   SECCIÓN SERVICIOS
-   ========================================= */
-.seccion-servicios {
-    width: 100%;
-    padding: 3rem 0;
-    background-color: #000000;
-    color: #ffffff;
-}
-
-.seccion-servicios > * {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-.seccion-servicios h2 {
-    color: var(--color-rojo);
-    font-size: 3.2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.servicio-horizontal {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 2.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--borde-lateral);
-}
-
-.servicio-horizontal img {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-left: 2rem;
-}
-
-.servicio-texto { flex: 1; margin-left: 1rem; }
-.servicio-texto h3 { color: var(--color-rojo); margin-bottom: 0.5rem; font-size: 1.8rem; }
-.servicio-texto p { margin-bottom: 1rem; line-height: 1.5; font-size: 1.2rem; }
-.servicio-texto ul { padding-left: 1.2rem; font-size: 1.1rem; }
-
-/* =========================================
-   FOOTER
-   ========================================= */
-.pie-pagina {
-    background-color: #000000;
-    color: #ffffff;
-    padding: 3rem 1rem 1rem 1rem;
-}
-
-.footer-contenedor {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.footer-info h3, .footer-social h3 { color: var(--color-rojo); margin-bottom: 1rem; font-size: 1.5rem; }
-.footer-info a, .footer-social a { color: inherit; text-decoration: none; transition: 0.3s; }
-.footer-info a:hover { text-decoration: underline; color: var(--color-rojo); }
-
-.footer-copyright {
-    text-align: center;
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #333;
-    font-size: 0.8rem;
-    opacity: 0.7;
-}
-
-/* =========================================
-   RESPONSIVE
-   ========================================= */
-@media (max-width: 992px) {
-    header { padding: 1rem; justify-content: center; text-align: center; position: relative; }
-    .logo-y-titulos { margin: 0 0 1rem 0; width: 100%; justify-content: center; }
-    .navegacion { margin: 0 0 1rem 0; }
-}
+.pie-pagina { background-color: #000; color: white; padding: 3rem; }
+.footer-contenedor { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; }
 
 @media (max-width: 768px) {
-    .contenido-principal { flex-direction: column; padding: 1.5rem; }
-    .menu-lateral { width: 100%; }
-    .texto-lectura h2 { font-size: 2rem; }
-    .servicio-horizontal { flex-direction: column; text-align: center; }
-    .servicio-horizontal img { width: 100%; height: 200px; margin-left: 0; }
-    .servicio-texto { margin-left: 0; }
+    header { padding: 1rem; flex-direction: column; }
+    .contenido-principal { flex-direction: column; }
 }
