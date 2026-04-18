@@ -15,13 +15,16 @@ asignación de horarios, lo que puede generar confusiones o conflictos cuando m�
 la sala.
 
 4.- Listado de secciones:
-1: Menú de navegación
-2: Banner principal/llamativo
-3: Descripción del negocio
-4: Lista de servicios
-5: Información de contacto
+1: Menú de navegación.
+2: Banner principal.
+3: Listado de cualidades y descripción del negocio.
+4: Lista de servicios.
+5: Eslogan de identidad.
+6: Información de contacto.
 
 5.- Integrantes con roles:
 *Constanza Ramírez: Diseñadora/Desarroladora
 *Felipe Neyra: Líder/Desarrolador
-*Leandro Gómez: Desarrollador
+*Leandro Gómez: Desarrollador/Tester
+
+URL: https://github.com/FelipeNeyra/Colegio-Laura-Robles-Silva

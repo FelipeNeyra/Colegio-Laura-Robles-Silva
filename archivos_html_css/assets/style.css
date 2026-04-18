@@ -1,21 +1,5 @@
 /* =========================================
-   BANNER MATRÍCULAS
-   ========================================= */
-.banner-matriculas {
-    background-color: var(--color-rojo);
-    padding: 0.8rem;
-    text-align: center;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 700;
-    font-family: 'League Spartan', sans-serif;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-
-/* =========================================
-   VARIABLES Y TEMAS (CSS PURO)
+   VARIABLES Y TEMAS
    ========================================= */
 :root {
     --color-rojo: #db353d;
@@ -33,15 +17,51 @@ body:has(#theme-oscuro:checked) {
     --borde-lateral: #777777;
 }
 
+/* Funcionamiento de Cartas en Modo Oscuro */
+body:has(#theme-oscuro:checked) .seccion-vision-mision .card-vms,
+body:has(#theme-oscuro:checked) .seccion-vision-mision .card-vms p,
+body:has(#theme-oscuro:checked) .seccion-vision-mision .card-vms li {
+    color: #111111;
+}
+
+/* Funcionamiento del contenido principal en Modo Oscuro */
+body:has(#theme-oscuro:checked) .contenido-principal,
+body:has(#theme-oscuro:checked) .contenido-principal .texto-lectura,
+body:has(#theme-oscuro:checked) .contenido-principal p,
+body:has(#theme-oscuro:checked) .seccion-graduados,
+body:has(#theme-oscuro:checked) .seccion-graduados p,
+body:has(#theme-oscuro:checked) .graduacion-texto p {
+    color: #333333;
+}
+body:has(#theme-oscuro:checked) .contenido-principal .texto-lectura h3 {
+    color: var(--color-rojo);
+}
+
+body:has(#theme-oscuro:checked) .selector-meses,
+body:has(#theme-oscuro:checked) .menu-lateral .item-lateral {
+    color: #111111;
+}
+
 .input-oculto { display: none; }
 
 /* =========================================
    ACCESIBILIDAD (TAMAÑOS DE FUENTE)
    ========================================= */
 body:has(#font-pequena:checked) p { font-size: 0.9rem !important; }
+body:has(#font-pequena:checked) .card-vms.sellos ol,
+body:has(#font-pequena:checked) .card-vms.sellos li { font-size: 0.9rem !important; }
+
 body:has(#font-normal:checked) p { font-size: 1.1rem !important; }
+body:has(#font-normal:checked) .card-vms.sellos ol,
+body:has(#font-normal:checked) .card-vms.sellos li { font-size: 1.1rem !important; }
+
 body:has(#font-grande:checked) p { font-size: 1.4rem !important; }
+body:has(#font-grande:checked) .card-vms.sellos ol,
+body:has(#font-grande:checked) .card-vms.sellos li { font-size: 1.4rem !important; }
+
 body:has(#font-grande:checked) h2 { font-size: 3.5rem !important; }
+
+body:has(#font-grande:checked) .banner-texto h2 { font-size: 2.5rem !important; }
 
 /* =========================================
    BASE
@@ -58,6 +78,22 @@ body {
 
 h1, h2, h3, .nav-link, .item-lateral, .btn-font-css, .btn-login {
     font-family: 'League Spartan', sans-serif;
+}
+
+/* =========================================
+   BANNER DE MATRÍCULAS
+   ========================================= */
+.banner-matriculas {
+    background-color: var(--color-rojo);
+    padding: 0.8rem;
+    text-align: center;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'League Spartan', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
 /* =========================================
@@ -140,7 +176,7 @@ header {
 }
 
 /* =========================================
-   PESTAÑAS LATERALES (CSS PURO)
+   BANNER IMAGEN
    ========================================= */
 .banner-imagen {
     position: relative;
@@ -198,107 +234,6 @@ header {
     background-color: #b92a30;
     transform: translateY(-2px);
 }
-
-.contenido-principal {
-    display: flex;
-    padding: 2rem 0;
-    gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.menu-lateral {
-    width: 230px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-    background-color: rgba(255, 255, 255, 0.98);
-    border-radius: 20px;
-    padding: 0.9rem;
-    border: 1px solid var(--borde-lateral);
-}
-
-.item-lateral {
-    padding: 0.9rem 1rem;
-    border-radius: 16px;
-    background-color: transparent;
-    color: var(--texto-secundario);
-    cursor: pointer;
-    font-weight: 700;
-    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-    border: 1px solid transparent;
-}
-
-.item-lateral:hover {
-    background-color: rgba(219, 53, 61, 0.08);
-    color: var(--color-rojo);
-    transform: translateX(1px);
-}
-
-.area-textos {
-    flex: 1;
-    background-color: rgba(255, 255, 255, 0.98);
-    border-radius: 20px;
-    padding: 1.6rem;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
-    min-height: 260px;
-}
-
-.texto-lectura {
-    display: none;
-}
-
-.texto-lectura h2 {
-    color: var(--color-rojo);
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.texto-lectura p {
-    color: var(--texto-secundario);
-    font-size: 1.1rem;
-    line-height: 1.8;
-    max-width: 760px;
-}
-
-/* Lógica de cambio de contenido sin JS */
-#tab-sobre:checked ~ .area-textos #sec-sobre,
-#tab-comunicados:checked ~ .area-textos #sec-comunicados,
-#tab-galeria:checked ~ .area-textos #sec-galeria {
-    display: block;
-    animation: fadeIn 0.5s;
-}
-
-/* Estilo activo del botón lateral */
-#tab-sobre:checked ~ .menu-lateral #label-sobre,
-#tab-comunicados:checked ~ .menu-lateral #label-comunicados,
-#tab-galeria:checked ~ .menu-lateral #label-galeria {
-    color: var(--color-rojo);
-    background-color: rgba(219, 53, 61, 0.12);
-    border: 1px solid rgba(219, 53, 61, 0.25);
-    box-shadow: inset 0 0 0 1px rgba(219, 53, 61, 0.08);
-}
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-/* =========================================
-   FOOTER
-   ========================================= */
-.pie-pagina { background-color: #000; color: #fff; padding: 3rem 1rem 1rem; margin-top: 4rem; }
-.footer-contenedor { display: flex; justify-content: space-around; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 2rem; }
-.footer-info h3, .footer-social h3 { color: var(--color-rojo); margin-bottom: 1rem; font-size: 1.5rem; }
-.footer-info p, .footer-social p { margin: 0.5rem 0; line-height: 1.7; }
-.pie-pagina a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-.pie-pagina a:hover {
-    color: var(--color-rojo);
-    text-decoration: underline;
-}
-.footer-copyright { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #333; font-size: 0.8rem; opacity: 0.7; }
 
 /* =========================================
    VISIÓN, MISIÓN Y SELLOS
@@ -389,7 +324,7 @@ header {
 }
 
 .card-vms.sellos ol {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     line-height: 1.8;
     padding-left: 1.8rem;
     margin: 0;
@@ -420,6 +355,182 @@ header {
 }
 
 /* =========================================
+   PESTAÑAS LATERALES (CSS PURO)
+   ========================================= */
+.contenido-principal {
+    display: flex;
+    padding: 2rem 0;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.menu-lateral {
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    background-color: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    padding: 0.9rem;
+    border: 1px solid var(--borde-lateral);
+}
+
+.item-lateral {
+    padding: 0.9rem 1rem;
+    border-radius: 16px;
+    background-color: transparent;
+    color: var(--texto-secundario);
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    border: 1px solid transparent;
+}
+
+.item-lateral:hover {
+    background-color: rgba(219, 53, 61, 0.08);
+    color: var(--color-rojo);
+    transform: translateX(1px);
+}
+
+/* =========================================
+   SECCIÓN DE CONTENIDO DE PESTAÑAS (SOBRE, COMUNICADOS, GALERÍA)
+   ========================================= */
+
+.area-textos {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    padding: 1.6rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    min-height: 260px;
+}
+
+.texto-lectura {
+    display: none;
+}
+
+.texto-lectura h2 {
+    color: var(--color-rojo);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+
+.texto-lectura p {
+    color: var(--texto-secundario);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 760px;
+}
+
+.label-meses {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: var(--color-rojo);
+}
+
+.selector-meses {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--borde-lateral);
+    width: 100%;
+    max-width: 320px;
+    background-color: #fff;
+    color: var(--texto-principal);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.selector-meses:focus {
+    outline: none;
+    border-color: var(--color-rojo);
+    box-shadow: 0 0 0 4px rgba(219, 53, 61, 0.12);
+}
+
+.spinner-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    overflow: hidden;
+    color: var(--texto-principal);
+    opacity: 0;
+    max-height: 0;
+}
+
+.spinner {
+    width: 28px;
+    height: 28px;
+    border: 4px solid rgba(0, 0, 0, 0.15);
+    border-top-color: var(--color-rojo);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.texto-carga {
+    font-size: 1rem;
+}
+
+.contenido-mes {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+#tab-galeria:checked ~ .area-textos #sec-galeria .spinner-contenedor {
+    animation: show-spinner 1.2s ease forwards;
+}
+
+#tab-galeria:checked ~ .area-textos #sec-galeria .contenido-mes {
+    animation: show-content 0.5s ease forwards 1.2s;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes show-spinner {
+    0% { opacity: 0; max-height: 0; }
+    10%, 80% { opacity: 1; max-height: 100px; }
+    100% { opacity: 0; max-height: 0; }
+}
+
+@keyframes show-content {
+    0% { opacity: 0; max-height: 0; }
+    100% { opacity: 1; max-height: 500px; }
+}
+
+/* Lógica de cambio de contenido sin JS */
+#tab-sobre:checked ~ .area-textos #sec-sobre,
+#tab-comunicados:checked ~ .area-textos #sec-comunicados,
+#tab-galeria:checked ~ .area-textos #sec-galeria {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+/* Estilo activo del botón lateral */
+#tab-sobre:checked ~ .menu-lateral #label-sobre,
+#tab-comunicados:checked ~ .menu-lateral #label-comunicados,
+#tab-galeria:checked ~ .menu-lateral #label-galeria {
+    color: var(--color-rojo);
+    background-color: rgba(219, 53, 61, 0.12);
+    border: 1px solid rgba(219, 53, 61, 0.25);
+    box-shadow: inset 0 0 0 1px rgba(219, 53, 61, 0.08);
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* =========================================
    SERVICIOS
    ========================================= */
 .seccion-servicios {
@@ -436,7 +547,7 @@ header {
 }
 
 .seccion-servicios h2 {
-    color: #fff;
+    color: var(--color-rojo);
     font-size: 2.5rem;
     margin-bottom: 2rem;
     text-align: center;
@@ -487,6 +598,10 @@ header {
     margin: 0.4rem 0 0 0;
 }
 
+.servicio-contenido h3 {
+    color: var(--color-rojo);
+}
+
 .servicio-contenido li {
     color: #e0e0e0;
     margin: 0.4rem 0;
@@ -504,6 +619,73 @@ header {
     font-weight: bold;
 }
 
+/* =========================================
+   GRADUADOS
+   ========================================= */
+.seccion-graduados {
+    background-color: #fff;
+    padding: 3rem 1rem;
+}
+.graduados-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.graduados-imagen {
+    flex: 1 1 380px;
+    min-width: 280px;
+    max-width: 620px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.15);
+}
+.graduados-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.graduacion-texto {
+    flex: 1 1 320px;
+    min-width: 280px;
+}
+.graduacion-texto h2 {
+    color: var(--color-rojo);
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+    line-height: 1.05;
+}
+.graduacion-texto p {
+    color: var(--lecsecundario);
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.pie-pagina { background-color: #000; color: #fff; padding: 3rem 1rem 1rem; margin-top: 4rem; }
+.footer-contenedor { display: flex; justify-content: space-around; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 2rem; }
+.footer-info h3, .footer-social h3 { color: var(--color-rojo); margin-bottom: 1rem; font-size: 1.5rem; }
+.footer-info p, .footer-social p { margin: 0.5rem 0; line-height: 1.7; }
+.pie-pagina a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.pie-pagina a:hover {
+    color: var(--color-rojo);
+    text-decoration: underline;
+}
+.footer-copyright { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #333; font-size: 0.8rem; opacity: 0.7; }
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
 /* Responsive */
 @media (max-width: 992px) {
     .grid-vms {
@@ -607,9 +789,9 @@ header {
     }
     .navegacion {
         width: 100%;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 0.8rem;
-        justify-content: center;
         margin-right: 0;
     }
     .nav-link {
@@ -624,11 +806,14 @@ header {
         height: 20px;
     }
     .dropdown {
-        width: 100%;
+        width: auto;
     }
     .dropdown-contenido {
         min-width: auto;
-        width: 100%;
+        width: auto;
+        max-width: 250px;
+        padding: 15px;
+        font-size: 0.9rem;
     }
     .usuario {
         width: 100%;

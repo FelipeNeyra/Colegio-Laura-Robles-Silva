@@ -1,5 +1,8 @@
+<!-- Declaración DOCTYPE -->
 <!DOCTYPE html>
+<!-- HTML raíz -->
 <html lang="es">
+<!-- Sección Head -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +13,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+<!-- Sección Body -->
 <body id="top">
+<!-- Banner de "Matrículas Abiertas" -->
     <div class="banner-matriculas">
         📋 Matrículas Abiertas 2026
     </div>
     
+<!-- Controles de accesibilidad -->
     <input type="radio" name="tema" id="theme-claro" class="input-oculto" checked>
     <input type="radio" name="tema" id="theme-oscuro" class="input-oculto">
 
@@ -22,6 +28,7 @@
     <input type="radio" name="tamano-letra" id="font-normal" class="input-oculto" checked>
     <input type="radio" name="tamano-letra" id="font-grande" class="input-oculto">
 
+<!-- Barra de Navegación -->
     <header>
         <div class="logo-y-titulos">
             <img src="logoLRS.png" alt="Escudo Escuela Laura Robles Silva" class="logo-escuela">
@@ -30,8 +37,10 @@
                 <p>Copiapó, Chile · Fundado en 1860</p>
             </div>
         </div>
-
+        
+        <!-- Botones de funcionamiento -->
         <nav class="navegacion">
+            <!-- Asociación de botones a otras secciones -->
             <a href="#top" class="nav-link">
                 <img src="logo_inicio.png" alt="Inicio" class="icono-img"> Inicio
             </a>
@@ -42,6 +51,7 @@
                 <img src="logo_contacto.png" alt="Contacto" class="icono-img"> Contacto
             </a>
             
+            <!--Menú de opciones de Accesibilidad -->
             <div class="dropdown">
                 <input type="checkbox" id="menu-toggle" class="input-oculto">
                 <label for="menu-toggle" class="nav-link" style="cursor:pointer">
@@ -72,6 +82,7 @@
         </div>
     </header>
 
+<!-- Banner principal con llamada a la acción -->
     <section class="banner-imagen">
         <img src="banner1.jpg" alt="Patio de la escuela">
         <div class="banner-texto">
@@ -81,12 +92,14 @@
         </div>
     </section>
 
+<!-- Sección de cartas (Visión, Misión y Sellos Educativos) -->
     <section class="seccion-vision-mision">
         <div class="contenedor-vms">
             <div class="encabezado-vms">
                 <h2>Visión, Misión y Sellos Educativos</h2>
             </div>
 
+            <!-- Conjunto de Cartas -->
             <div class="grid-vms">
                 <div class="card-vms vision">
                     <h3>Visión</h3>
@@ -112,13 +125,16 @@
                 </div>
             </div>
 
+            <!-- Lema de la escuela -->
             <div class="lema-escuela">
                 <p>"Una escuela que genera oportunidades para que todos aprendan"</p>
             </div>
         </div>
     </section>
 
+<!-- Sección de contenido principal (Información del Colegio) -->
     <main class="contenido-principal">
+        <!-- Inputs de menú lateral izquierdo -->
         <input type="radio" name="pestanas" id="tab-sobre" class="input-oculto" checked>
         <input type="radio" name="pestanas" id="tab-comunicados" class="input-oculto">
         <input type="radio" name="pestanas" id="tab-galeria" class="input-oculto">
@@ -126,23 +142,28 @@
         <aside class="menu-lateral">
             <label for="tab-sobre" class="item-lateral" id="label-sobre">Sobre el Colegio</label>
             <label for="tab-comunicados" class="item-lateral" id="label-comunicados">Comunicados</label>
-            <label for="tab-galeria" class="item-lateral" id="label-galeria">Galería</label>
+            <label for="tab-galeria" class="item-lateral" id="label-galeria">Actividades</label>
         </aside>
 
+        <!-- Artículos de servicios-->
         <div class="area-textos" id="nosotros">
+            <!-- Artículo de Información del colegio -->
             <article id="sec-sobre" class="texto-lectura">
                 <h2>Sobre el Colegio</h2>
                 <p>Nuestra institución cuenta con una trayectoria centenaria en la ciudad de Copiapó, brindando educación de calidad desde 1860.</p>
             </article>
 
+            <!-- Artículo de Comunicados -->
             <article id="sec-comunicados" class="texto-lectura">
                 <h2>Comunicados</h2>
-                <p>Bienvenido a la sección de comunicados oficiales. Aquí se publicarán las noticias de la Escuela Laura Robles Silva.</p>
+                <p>Bienvenido a la sección de comunicados oficiales. Aquí se publicarán las noticias, comunicados oficiales y avisos de la Escuela Laura Robles Silva.</p>
             </article>
 
+            <!-- Artículo de Galería de Actividades -->
             <article id="sec-galeria" class="texto-lectura">
                 <h2>Galería de Actividades</h2>
 
+                <!-- Barra de selección de meses -->
                 <label for="meses" class="label-meses">Selecciona un mes:</label>
                 <select id="meses" class="selector-meses">
                     <option value="enero">Enero 2026</option>
@@ -159,6 +180,7 @@
                     <option value="diciembre">Diciembre 2026</option>
                 </select>
 
+                <!-- Spinner de carga -->
                 <div class="spinner-contenedor">
                     <div class="spinner"></div>
                     <p class="texto-carga">Cargando actividades...</p>
@@ -171,10 +193,12 @@
         </div>
     </main>
 
+<!-- Sección de servicios -->
     <section id="servicios" class="seccion-servicios">
         <div class="contenedor-servicios">
             <h2>Nuestros Servicios</h2>
             
+            <!-- Artículo de educación básica -->
             <article class="servicio">
                 <div class="servicio-imagen">
                     <img src="educacion.png" alt="Estudiantes en sala de clases">
@@ -185,6 +209,7 @@
                 </div>
             </article>
 
+            <!-- Artículo de Programa de Integración Escolar (PIE) -->
             <article class="servicio">
                 <div class="servicio-imagen">
                     <img src="integracion.png" alt="Estudiantes en inclusión escolar">
@@ -201,6 +226,7 @@
                 </div>
             </article>
 
+            <!-- Artículo de Gestión de Sala de Computación -->
             <article class="servicio">
                 <div class="servicio-imagen">
                     <img src="computacion.jpeg" alt="Sala de computación">
@@ -218,6 +244,7 @@
         </div>
     </section>
 
+<!-- Sección de eslogan de identidad (Graduados) -->
     <section class="seccion-graduados">
         <div class="graduados-contenedor">
             <div class="graduados-imagen">
@@ -230,14 +257,18 @@
         </div>
     </section>
 
+<!-- Contactos -->
     <footer id="contacto" class="pie-pagina">
         <div class="footer-contenedor">
+            <!-- Datos de contacto -->
             <div class="footer-info">
                 <h3>Contacto</h3>
                 <p>📍 <a href="https://www.google.com/maps/search/?api=1&query=Corcovado+1375+Copiap%C3%B3" target="_blank" rel="noopener noreferrer">Corcovado 1375, Copiapó</a></p>
                 <p>📞 <a href="tel:+5252243401">(52) 224 3401</a></p>
                 <p>✉️ <a href="mailto:lauraroblessilva@gmail.com">lauraroblessilva@gmail.com</a></p>
             </div>
+
+            <!-- Redes sociales -->
             <div class="footer-social">
                 <h3>Síguenos</h3>
                 <p>🔵 <a href="https://www.facebook.com/EscuelaLauraRoblesSilva" target="_blank" rel="noopener noreferrer">(Facebook) Escuela Laura Robles Silva</a></p>
