@@ -72,6 +72,8 @@ body:has(#font-grande:checked) .card-vms.sellos li { font-size: 1.4rem !importan
 
 body:has(#font-grande:checked) h2 { font-size: 3.5rem !important; }
 
+body:has(#font-grande:checked) .banner-texto h2 { font-size: 2.5rem !important; }
+
 /* =========================================
    BASE
    ========================================= */
@@ -771,9 +773,9 @@ header {
     }
     .navegacion {
         width: 100%;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 0.8rem;
-        justify-content: center;
         margin-right: 0;
     }
     .nav-link {
@@ -788,11 +790,14 @@ header {
         height: 20px;
     }
     .dropdown {
-        width: 100%;
+        width: auto;
     }
     .dropdown-contenido {
         min-width: auto;
-        width: 100%;
+        width: auto;
+        max-width: 250px;
+        padding: 15px;
+        font-size: 0.9rem;
     }
     .usuario {
         width: 100%;
