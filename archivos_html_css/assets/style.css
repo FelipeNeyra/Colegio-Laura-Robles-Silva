@@ -47,9 +47,9 @@ body:has(#theme-oscuro:checked) .menu-lateral .item-lateral {
 /* =========================================
    ACCESIBILIDAD (TAMAÑOS DE FUENTE)
    ========================================= */
-body:has(#font-pequena:checked) p { font-size: 0.9rem !important; }
+body:has(#font-pequena:checked) p { font-size: 1rem !important; }
 body:has(#font-pequena:checked) .card-vms.sellos ol,
-body:has(#font-pequena:checked) .card-vms.sellos li { font-size: 0.9rem !important; }
+body:has(#font-pequena:checked) .card-vms.sellos li { font-size: 1rem !important; }
 
 body:has(#font-normal:checked) p { font-size: 1.1rem !important; }
 body:has(#font-normal:checked) .card-vms.sellos ol,
@@ -67,7 +67,7 @@ body:has(#font-grande:checked) .banner-texto h2 { font-size: 2.5rem !important; 
    BASE
    ========================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; } 
 
 body {
     background-color: var(--fondo-sitio);
@@ -113,7 +113,7 @@ header {
 .logo-y-titulos { display: flex; align-items: center; gap: 1rem; margin-right: auto; }
 .logo-escuela { height: 70px; }
 .titulos h1 { color: var(--color-rojo); font-size: 1.5rem; }
-.titulos p { color: var(--color-rojo); font-size: 0.9rem; font-weight: bold; }
+.titulos p { color: var(--color-rojo); font-size: 1rem; font-weight: bold; }
 
 .navegacion { display: flex; gap: 2rem; align-items: center; margin-right: 3rem; }
 .nav-link { text-decoration: none; color: var(--color-rojo); display: flex; flex-direction: column; align-items: center; font-weight: 600; cursor: pointer; }
@@ -132,7 +132,7 @@ header {
     border-radius: 8px;
     top: 100%;
     right: 0;
-    padding: 20px;
+    padding: 25px;
     border: 1px solid var(--borde-lateral);
     z-index: 100;
 }
@@ -291,7 +291,7 @@ header {
 }
 
 .card-vms p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.7;
     margin: 0;
     color: var(--texto-principal);
@@ -332,7 +332,7 @@ header {
 }
 
 .card-vms.sellos li {
-    margin: 0.8rem 0;
+    margin: 0.8rem ;
     color: var(--texto-principal);
 }
 
@@ -477,16 +477,17 @@ header {
 }
 
 .contenido-mes {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     padding: 1.5rem;
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     opacity: 0;
     max-height: 0;
     overflow: hidden;
 }
 
+/* Animación de carga para la sección de galería */
 #tab-galeria:checked ~ .area-textos #sec-galeria .spinner-contenedor {
     animation: show-spinner 1.2s ease forwards;
 }
@@ -495,6 +496,7 @@ header {
     animation: show-content 0.5s ease forwards 1.2s;
 }
 
+/* Animaciones para el spinner y el contenido */
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
@@ -518,6 +520,8 @@ header {
     animation: fadeIn 0.5s;
 }
 
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
 /* Estilo activo del botón lateral */
 #tab-sobre:checked ~ .menu-lateral #label-sobre,
 #tab-comunicados:checked ~ .menu-lateral #label-comunicados,
@@ -527,8 +531,6 @@ header {
     border: 1px solid rgba(219, 53, 61, 0.25);
     box-shadow: inset 0 0 0 1px rgba(219, 53, 61, 0.08);
 }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* =========================================
    SERVICIOS
@@ -557,7 +559,7 @@ header {
     display: flex;
     gap: 1.2rem;
     margin: 1.5rem 0;
-    padding: 1.4rem;
+    padding: 1rem;
     background-color: rgba(219, 53, 61, 0.15);
     border-radius: 8px;
     border-left: 4px solid var(--color-rojo);
@@ -687,7 +689,7 @@ header {
    RESPONSIVE DESIGN
    ========================================= */
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 992px) { /* Ajustes para tabletas y pantallas medianas */
     .grid-vms {
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
@@ -706,7 +708,7 @@ header {
     }
     
     .card-vms p {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     
     .lema-escuela {
@@ -719,6 +721,7 @@ header {
     
     .contenido-principal { flex-direction: column; padding: 1rem; }
     .menu-lateral { width: 100%; }
+
     .servicio { 
         flex-direction: column; 
         padding: 1.2rem 1rem;
@@ -740,7 +743,7 @@ header {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Ajustes para móviles grandes y tabletas pequeñas */
     .seccion-vision-mision {
         padding: 1.5rem 0.5rem;
         margin: 1.5rem 0;
@@ -799,7 +802,7 @@ header {
         align-items: center;
         gap: 0.5rem;
         padding: 0.5rem 0.8rem;
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
     .icono-img {
         margin-bottom: 0;
@@ -813,7 +816,7 @@ header {
         width: auto;
         max-width: 250px;
         padding: 15px;
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     .usuario {
         width: 100%;
@@ -828,7 +831,7 @@ header {
         font-size: 2rem;
     }
     .banner-texto p {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
     .contenido-principal {
         padding: 1rem;
@@ -869,7 +872,7 @@ header {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* Ajustes para móviles pequeños */
     header {
         padding: 0.8rem 0.8rem 0.4rem;
     }
@@ -880,7 +883,7 @@ header {
         font-size: 0.8rem;
     }
     .nav-link {
-        font-size: 0.9rem;
+        font-size: 1rem;
         padding: 0.5rem 0.6rem;
     }
     .btn-login {
@@ -890,13 +893,13 @@ header {
         font-size: 1.6rem;
     }
     .banner-texto p {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     .servicio {
         padding: 1rem;
     }
     .servicio-contenido p,
     .servicio-contenido li {
-        font-size: 0.94rem;
+        font-size: 1rem;
     }
 }
