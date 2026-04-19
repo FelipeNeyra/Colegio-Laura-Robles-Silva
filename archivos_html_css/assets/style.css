@@ -17,29 +17,50 @@ body:has(#theme-oscuro:checked) {
     --borde-lateral: #777777;
 }
 
-/* Funcionamiento de Cartas en Modo Oscuro */
-body:has(#theme-oscuro:checked) .seccion-vision-mision .card-vms,
-body:has(#theme-oscuro:checked) .seccion-vision-mision .card-vms p,
-body:has(#theme-oscuro:checked) .seccion-vision-mision .card-vms li {
-    color: #111111;
+/* Funcionamiento de Cartas en Modo Oscuro (#505050) */
+body:has(#theme-oscuro:checked) .card-vms.vision,
+body:has(#theme-oscuro:checked) .card-vms.mision,
+body:has(#theme-oscuro:checked) .card-vms.sellos {
+    background-color: #505050;
+}
+body:has(#theme-oscuro:checked) .card-vms p,
+body:has(#theme-oscuro:checked) .card-vms li,
+body:has(#theme-oscuro:checked) .card-vms ol {
+    color: var(--texto-secundario);
+}
+body:has(#theme-oscuro:checked) .card-vms.mision p,
+body:has(#theme-oscuro:checked) .card-vms.sellos li {
+    color: var(--texto-secundario);
 }
 
-/* Funcionamiento del contenido principal en Modo Oscuro */
-body:has(#theme-oscuro:checked) .contenido-principal,
-body:has(#theme-oscuro:checked) .contenido-principal .texto-lectura,
-body:has(#theme-oscuro:checked) .contenido-principal p,
-body:has(#theme-oscuro:checked) .seccion-graduados,
-body:has(#theme-oscuro:checked) .seccion-graduados p,
-body:has(#theme-oscuro:checked) .graduacion-texto p {
-    color: #333333;
+/* Funcionamiento del contenido principal en Modo Oscuro (#505050) */
+body:has(#theme-oscuro:checked) .menu-lateral,
+body:has(#theme-oscuro:checked) .area-textos,
+body:has(#theme-oscuro:checked) .contenido-mes,
+body:has(#theme-oscuro:checked) .selector-meses {
+    background-color: #505050;
+    color: var(--texto-principal);
 }
-body:has(#theme-oscuro:checked) .contenido-principal .texto-lectura h3 {
+body:has(#theme-oscuro:checked) .selector-meses {
+    border-color: var(--borde-lateral);
+}
+body:has(#theme-oscuro:checked) .menu-lateral .item-lateral {
+    color: var(--texto-secundario);
+}
+body:has(#theme-oscuro:checked) .menu-lateral .item-lateral:hover {
     color: var(--color-rojo);
 }
+body:has(#theme-oscuro:checked) .texto-lectura p,
+body:has(#theme-oscuro:checked) .contenido-mes p {
+    color: var(--texto-secundario);
+}
 
-body:has(#theme-oscuro:checked) .selector-meses,
-body:has(#theme-oscuro:checked) .menu-lateral .item-lateral {
-    color: #111111;
+/* Juntos celebramos cada logro en Modo Oscuro (#505050) */
+body:has(#theme-oscuro:checked) .seccion-graduados {
+    background-color: #505050;
+}
+body:has(#theme-oscuro:checked) .graduacion-texto p {
+    color: var(--texto-secundario);
 }
 
 .input-oculto { display: none; }
@@ -140,6 +161,16 @@ header {
 /* Mostrar menú al marcar checkbox sin JS */
 #menu-toggle:checked ~ .dropdown-contenido { display: flex; flex-direction: column; align-items: center; }
 
+/* Capa invisible para cerrar el menú */
+.fondo-cierra-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 90; /* Por debajo del menú (100) y de Accesibilidad (101) */
+    cursor: default;
+}
+#menu-toggle:checked ~ .fondo-cierra-menu { display: block; }
+
 .dropdown-item { width: 100%; padding: 10px; cursor: pointer; text-align: left; text-decoration: none; color: var(--texto-principal); display: block; }
 .dropdown-item:hover { color: var(--color-rojo); }
 
@@ -163,34 +194,83 @@ header {
     color: var(--color-rojo); text-decoration: none; font-weight: 600; transition: 0.3s;
 }
 .btn-login:hover { background-color: var(--color-rojo); color: white; }
-.icono-login { height: 20px; filter: grayscale(1); }
-.btn-login:hover .icono-login { filter: brightness(0) invert(1); }
 
 /* =========================================
-   USUARIO
-   ========================================= */
-.usuario {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-/* =========================================
-   BANNER IMAGEN
+   CARRUSEL MANUAL (CSS PURO CON FLECHAS)
    ========================================= */
 .banner-imagen {
     position: relative;
     overflow: hidden;
-    border-radius: 0 0 20px 20px;
+    height: 380px; 
+    /* ¡Redondeado inferior eliminado como pediste! */
 }
 
-.banner-imagen img {
+/* El contenedor largo que aloja las 5 imágenes en fila */
+.carrusel-slides {
+    display: flex;
+    width: 500%; /* 100% por cada una de las 5 imágenes */
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.slide {
+    width: 20%; /* 100% dividido en 5 */
+    height: 100%;
+    position: relative;
+}
+
+.slide img {
     width: 100%;
-    height: 380px;
+    height: 100%;
     object-fit: cover;
-    display: block;
 }
 
+/* Lógica de movimiento: desplazamos la fila según qué botón esté marcado */
+#slide1:checked ~ .carrusel-slides { transform: translateX(0%); }
+#slide2:checked ~ .carrusel-slides { transform: translateX(-20%); }
+#slide3:checked ~ .carrusel-slides { transform: translateX(-40%); }
+#slide4:checked ~ .carrusel-slides { transform: translateX(-60%); }
+#slide5:checked ~ .carrusel-slides { transform: translateX(-80%); }
+
+/* Contenedores de flechas */
+.flechas {
+    display: none; /* Ocultas por defecto */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 3; /* Sobre el texto y las imágenes */
+    pointer-events: none; /* Para no bloquear clics en la zona transparente */
+}
+
+/* Diseño de la flecha */
+.flecha {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    pointer-events: auto; /* Reactivamos el clic solo en el botón de la flecha */
+    transition: background-color 0.3s;
+    user-select: none;
+}
+.flecha:hover { background-color: var(--color-rojo); }
+
+/* Mostrar las flechas correctas según el slide que esté activo */
+#slide1:checked ~ .flechas-1 { display: flex; }
+#slide2:checked ~ .flechas-2 { display: flex; }
+#slide3:checked ~ .flechas-3 { display: flex; }
+#slide4:checked ~ .flechas-4 { display: flex; }
+#slide5:checked ~ .flechas-5 { display: flex; }
+
+/* El gradiente negro y el texto principal de bienvenida */
 .banner-texto {
     position: absolute;
     inset: 0;
@@ -202,7 +282,12 @@ header {
     padding: 1rem 2rem;
     text-align: center;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.55));
+    z-index: 2; /* Por debajo de las flechas pero arriba de las imágenes */
+    pointer-events: none; /* Permite que el ratón "traspase" el texto si fuera necesario */
 }
+
+/* El botón de 'Infórmate' sí debe ser clicable */
+.banner-texto .btn-banner { pointer-events: auto; }
 
 .banner-texto h2 {
     color: white;
@@ -394,7 +479,7 @@ header {
 }
 
 /* =========================================
-   SECCIÓN DE CONTENIDO DE PESTAÑAS (SOBRE, COMUNICADOS, GALERÍA)
+   SECCIÓN DE CONTENIDO DE PESTAÑAS
    ========================================= */
 
 .area-textos {
@@ -686,217 +771,64 @@ header {
 /* =========================================
    RESPONSIVE DESIGN
    ========================================= */
-/* Responsive */
 @media (max-width: 992px) {
-    .grid-vms {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-    }
-    
-    .encabezado-vms h2 {
-        font-size: 2rem;
-    }
-    
-    .card-vms {
-        padding: 2rem;
-    }
-    
-    .card-vms h3 {
-        font-size: 1.5rem;
-    }
-    
-    .card-vms p {
-        font-size: 0.9rem;
-    }
-    
-    .lema-escuela {
-        padding: 2rem;
-    }
-    
-    .lema-escuela p {
-        font-size: 1.2rem;
-    }
-    
+    .grid-vms { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .encabezado-vms h2 { font-size: 2rem; }
+    .card-vms { padding: 2rem; }
+    .card-vms h3 { font-size: 1.5rem; }
+    .card-vms p { font-size: 0.9rem; }
+    .lema-escuela { padding: 2rem; }
+    .lema-escuela p { font-size: 1.2rem; }
     .contenido-principal { flex-direction: column; padding: 1rem; }
     .menu-lateral { width: 100%; }
-    .servicio { 
-        flex-direction: column; 
-        padding: 1.2rem 1rem;
-        gap: 1rem;
-    }
-    .servicio-imagen { 
-        flex: 1; 
-        width: 100%; 
-        height: 160px;
-    }
-    .servicio-contenido h3 {
-        font-size: 1.1rem;
-    }
-    .seccion-servicios {
-        padding: 2rem 1rem;
-    }
-    .seccion-servicios h2 {
-        font-size: 2rem;
-    }
+    .servicio { flex-direction: column; padding: 1.2rem 1rem; gap: 1rem; }
+    .servicio-imagen { flex: 1; width: 100%; height: 160px; }
+    .servicio-contenido h3 { font-size: 1.1rem; }
+    .seccion-servicios { padding: 2rem 1rem; }
+    .seccion-servicios h2 { font-size: 2rem; }
 }
 
 @media (max-width: 768px) {
-    .seccion-vision-mision {
-        padding: 1.5rem 0.5rem;
-        margin: 1.5rem 0;
-    }
+    .seccion-vision-mision { padding: 1.5rem 0.5rem; margin: 1.5rem 0; }
+    .encabezado-vms h2 { font-size: 1.5rem; }
+    .grid-vms { grid-template-columns: 1fr; gap: 1.2rem; }
+    .card-vms { padding: 1.5rem; }
+    .card-vms h3 { font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .card-vms p { font-size: 0.85rem; }
+    .lema-escuela { padding: 1.5rem; margin-top: 1.5rem; }
+    .lema-escuela p { font-size: 1rem; }
     
-    .encabezado-vms h2 {
-        font-size: 1.5rem;
-    }
+    header { flex-direction: column; align-items: stretch; padding: 1rem 1rem 0.5rem; }
+    .logo-y-titulos { width: 100%; justify-content: center; margin-bottom: 1rem; }
+    .navegacion { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-right: 0; }
+    .nav-link { flex-direction: row; align-items: center; gap: 0.5rem; padding: 0.5rem 0.8rem; font-size: 0.95rem; }
+    .icono-img { margin-bottom: 0; height: 20px; }
+    .dropdown { width: auto; }
+    .dropdown-contenido { min-width: auto; width: auto; max-width: 250px; padding: 15px; font-size: 0.9rem; }
+    .usuario { width: 100%; margin-top: 1rem; display: flex; justify-content: center; }
     
-    .grid-vms {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-    }
-    
-    .card-vms {
-        padding: 1.5rem;
-    }
-    
-    .card-vms h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.8rem;
-    }
-    
-    .card-vms p {
-        font-size: 0.85rem;
-    }
-    
-    .lema-escuela {
-        padding: 1.5rem;
-        margin-top: 1.5rem;
-    }
-    
-    .lema-escuela p {
-        font-size: 1rem;
-    }
-    
-    header {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1rem 1rem 0.5rem;
-    }
-    .logo-y-titulos {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 1rem;
-    }
-    .navegacion {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.8rem;
-        margin-right: 0;
-    }
-    .nav-link {
-        flex-direction: row;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 0.8rem;
-        font-size: 0.95rem;
-    }
-    .icono-img {
-        margin-bottom: 0;
-        height: 20px;
-    }
-    .dropdown {
-        width: auto;
-    }
-    .dropdown-contenido {
-        min-width: auto;
-        width: auto;
-        max-width: 250px;
-        padding: 15px;
-        font-size: 0.9rem;
-    }
-    .usuario {
-        width: 100%;
-        margin-top: 1rem;
-        display: flex;
-        justify-content: center;
-    }
-    .banner-texto {
-        padding: 1.5rem 1rem;
-    }
-    .banner-texto h2 {
-        font-size: 2rem;
-    }
-    .banner-texto p {
-        font-size: 0.95rem;
-    }
-    .contenido-principal {
-        padding: 1rem;
-    }
-    .menu-lateral {
-        width: 100%;
-        padding: 0.8rem;
-    }
-    .area-textos {
-        padding: 1.2rem;
-    }
-    .footer-contenedor {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 1.2rem;
-    }
-    .footer-info,
-    .footer-social {
-        width: 100%;
-        max-width: 480px;
-    }
-    .footer-info h3,
-    .footer-social h3 {
-        text-align: center;
-    }
-    .footer-info p,
-    .footer-social p {
-        margin: 0.6rem 0;
-    }
-    .pie-pagina {
-        padding: 2rem 1rem 1rem;
-    }
-    .btn-banner {
-        width: 100%;
-        max-width: 320px;
-        text-align: center;
-    }
+    .banner-texto { padding: 1.5rem 1rem; }
+    .banner-texto h2 { font-size: 2rem; }
+    .banner-texto p { font-size: 0.95rem; }
+    .contenido-principal { padding: 1rem; }
+    .menu-lateral { width: 100%; padding: 0.8rem; }
+    .area-textos { padding: 1.2rem; }
+    .footer-contenedor { flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; }
+    .footer-info, .footer-social { width: 100%; max-width: 480px; }
+    .footer-info h3, .footer-social h3 { text-align: center; }
+    .footer-info p, .footer-social p { margin: 0.6rem 0; }
+    .pie-pagina { padding: 2rem 1rem 1rem; }
+    .btn-banner { width: 100%; max-width: 320px; text-align: center; }
 }
 
 @media (max-width: 480px) {
-    header {
-        padding: 0.8rem 0.8rem 0.4rem;
-    }
-    .titulos h1 {
-        font-size: 1.2rem;
-    }
-    .titulos p {
-        font-size: 0.8rem;
-    }
-    .nav-link {
-        font-size: 0.9rem;
-        padding: 0.5rem 0.6rem;
-    }
-    .btn-login {
-        padding: 0.6rem 1rem;
-    }
-    .banner-texto h2 {
-        font-size: 1.6rem;
-    }
-    .banner-texto p {
-        font-size: 0.9rem;
-    }
-    .servicio {
-        padding: 1rem;
-    }
-    .servicio-contenido p,
-    .servicio-contenido li {
-        font-size: 0.94rem;
-    }
+    header { padding: 0.8rem 0.8rem 0.4rem; }
+    .titulos h1 { font-size: 1.2rem; }
+    .titulos p { font-size: 0.8rem; }
+    .nav-link { font-size: 0.9rem; padding: 0.5rem 0.6rem; }
+    .btn-login { padding: 0.6rem 1rem; }
+    .banner-texto h2 { font-size: 1.6rem; }
+    .banner-texto p { font-size: 0.9rem; }
+    .servicio { padding: 1rem; }
+    .servicio-contenido p, .servicio-contenido li { font-size: 0.94rem; }
 }
