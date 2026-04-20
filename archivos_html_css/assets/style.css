@@ -55,7 +55,7 @@ body:has(#theme-oscuro:checked) .contenido-mes p {
     color: var(--texto-secundario);
 }
 
-/* Juntos celebramos cada logro en Modo Oscuro (#505050) */
+/* Sección "Juntos celebramos cada logro" en Modo Oscuro (#505050) */
 body:has(#theme-oscuro:checked) .seccion-graduados {
     background-color: #505050;
 }
@@ -202,19 +202,18 @@ header {
     position: relative;
     overflow: hidden;
     height: 380px; 
-    /* ¡Redondeado inferior eliminado como pediste! */
 }
 
 /* El contenedor largo que aloja las 5 imágenes en fila */
 .carrusel-slides {
     display: flex;
-    width: 500%; /* 100% por cada una de las 5 imágenes */
+    width: 500%; 
     height: 100%;
     transition: transform 0.6s ease-in-out;
 }
 
 .slide {
-    width: 20%; /* 100% dividido en 5 */
+    width: 20%; 
     height: 100%;
     position: relative;
 }
@@ -234,15 +233,15 @@ header {
 
 /* Contenedores de flechas */
 .flechas {
-    display: none; /* Ocultas por defecto */
+    display: none; 
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
     justify-content: space-between;
     padding: 0 20px;
-    z-index: 3; /* Sobre el texto y las imágenes */
-    pointer-events: none; /* Para no bloquear clics en la zona transparente */
+    z-index: 3; 
+    pointer-events: none; 
 }
 
 /* Diseño de la flecha */
@@ -257,7 +256,7 @@ header {
     justify-content: center;
     font-size: 1.2rem;
     cursor: pointer;
-    pointer-events: auto; /* Reactivamos el clic solo en el botón de la flecha */
+    pointer-events: auto; 
     transition: background-color 0.3s;
     user-select: none;
 }
@@ -285,9 +284,6 @@ header {
     z-index: 2; /* Por debajo de las flechas pero arriba de las imágenes */
     pointer-events: none; /* Permite que el ratón "traspase" el texto si fuera necesario */
 }
-
-/* El botón de 'Infórmate' sí debe ser clicable */
-.banner-texto .btn-banner { pointer-events: auto; }
 
 .banner-texto h2 {
     color: white;
@@ -319,6 +315,8 @@ header {
     background-color: #b92a30;
     transform: translateY(-2px);
 }
+
+.banner-texto .btn-banner { pointer-events: auto; }
 
 /* =========================================
    VISIÓN, MISIÓN Y SELLOS
@@ -397,6 +395,20 @@ header {
 }
 
 .card-vms.mision p {
+    color: var(--texto-principal);
+}
+
+.card-vms.prueba {
+    background-color: #fff;
+    color: var(--texto-principal);
+    border-color: var(--color-rojo);
+}
+
+.card-vms.prueba h3 {
+    color: var(--color-rojo);
+}
+
+.card-vms.prueba p {
     color: var(--texto-principal);
 }
 
@@ -771,7 +783,7 @@ header {
 /* =========================================
    RESPONSIVE DESIGN
    ========================================= */
-@media (max-width: 992px) {
+@media (max-width: 992px) { /* Ajustes para tabletas y pantallas medianas */
     .grid-vms { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .encabezado-vms h2 { font-size: 2rem; }
     .card-vms { padding: 2rem; }
@@ -788,7 +800,7 @@ header {
     .seccion-servicios h2 { font-size: 2rem; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Ajustes para móviles grandes y pantallas pequeñas */
     .seccion-vision-mision { padding: 1.5rem 0.5rem; margin: 1.5rem 0; }
     .encabezado-vms h2 { font-size: 1.5rem; }
     .grid-vms { grid-template-columns: 1fr; gap: 1.2rem; }
@@ -821,7 +833,7 @@ header {
     .btn-banner { width: 100%; max-width: 320px; text-align: center; }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* Ajustes para móviles pequeños */
     header { padding: 0.8rem 0.8rem 0.4rem; }
     .titulos h1 { font-size: 1.2rem; }
     .titulos p { font-size: 0.8rem; }
