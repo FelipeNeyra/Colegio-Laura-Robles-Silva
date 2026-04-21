@@ -27,4 +27,5 @@ la sala.
 *Felipe Neyra: Líder/Desarrolador
 *Leandro Gómez: Desarrollador/Tester
 
-URL: https://github.com/FelipeNeyra/Colegio-Laura-Robles-Silva
+URL de sitio: https://felipeneyra.github.io/Colegio-Laura-Robles-Silva/
+Opción necesaria para transición de scroll: chrome://flags/#smooth-scrolling
