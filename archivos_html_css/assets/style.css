@@ -1,7 +1,7 @@
 /* =========================================
    VARIABLES Y TEMAS
    ========================================= */
-:root {
+:root { /* Variables de color para el tema claro (valores por defecto) */
     --color-rojo: #db353d;
     --fondo-sitio: #d9d9d9;
     --texto-principal: #333333;
@@ -88,13 +88,14 @@ body:has(#font-grande:checked) .banner-texto h2 { font-size: 2.5rem !important; 
    BASE
    ========================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+
+html { scroll-behavior: smooth; } /* Transición suave para cambios de tema y colores */
 
 body {
     background-color: var(--fondo-sitio);
     color: var(--texto-principal);
     font-family: 'Segoe UI', sans-serif;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Transición suave para cambios de tema */
 }
 
 h1, h2, h3, .nav-link, .item-lateral, .btn-font-css, .btn-login {
@@ -166,17 +167,20 @@ header {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: 90; /* Por debajo del menú (100) y de Accesibilidad (101) */
+    z-index: 90; 
     cursor: default;
 }
 #menu-toggle:checked ~ .fondo-cierra-menu { display: block; }
 
+/*Opciones de modo claro y oscuro */
 .dropdown-item { width: 100%; padding: 10px; cursor: pointer; text-align: left; text-decoration: none; color: var(--texto-principal); display: block; }
 .dropdown-item:hover { color: var(--color-rojo); }
 
+/*Linea divisoria y título del menú de accesibilidad*/
 .divisor-accesibilidad { border: 0.5px solid var(--borde-lateral); margin: 10px 0; width: 100%; }
 .titulo-font-accesibilidad { font-size: 1.2rem; color: #4a6a8a; margin: 10px 0; font-weight: bold; }
 
+/* Botones para cambiar tamaño de fuente */
 .contenedor-botones-font { display: flex; gap: 10px; }
 .btn-font-css {
     width: 45px; height: 40px; border: 2px solid var(--color-rojo);
@@ -340,7 +344,7 @@ header {
 .encabezado-vms h2 {
     font-size: 2.5rem;
     color: var(--color-rojo);
-    font-weight: 700;
+    font-weight: 1200;
     margin: 0;
 }
 
@@ -395,20 +399,6 @@ header {
 }
 
 .card-vms.mision p {
-    color: var(--texto-principal);
-}
-
-.card-vms.prueba {
-    background-color: #fff;
-    color: var(--texto-principal);
-    border-color: var(--color-rojo);
-}
-
-.card-vms.prueba h3 {
-    color: var(--color-rojo);
-}
-
-.card-vms.prueba p {
     color: var(--texto-principal);
 }
 
