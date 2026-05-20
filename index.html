@@ -252,6 +252,63 @@
                         <li>Visualización de disponibilidad</li>
                         <li>Normativa de uso responsable</li>
                     </ul>
+                    <div class="solicitud-sala">
+                        <h4 id="form-solicitud-title">Solicitud de uso - Sala de Computación</h4>
+                        <form id="form-solicitud-sala" novalidate aria-labelledby="form-solicitud-title">
+                            <div class="form-row">
+                                <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
+                                <input type="text" id="nombre" name="nombre" required aria-required="true" aria-describedby="error-nombre">
+                                <span class="error" id="error-nombre" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="asignatura">Asignatura / Curso <span aria-hidden="true">*</span></label>
+                                <input type="text" id="asignatura" name="asignatura" required aria-required="true" aria-describedby="error-asignatura">
+                                <span class="error" id="error-asignatura" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="correo">Correo electrónico <span aria-hidden="true">*</span></label>
+                                <input type="email" id="correo" name="correo" required aria-required="true" aria-describedby="error-correo">
+                                <span class="error" id="error-correo" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="fecha">Fecha de uso <span aria-hidden="true">*</span></label>
+                                <input type="date" id="fecha" name="fecha" required aria-required="true" aria-describedby="error-fecha">
+                                <span class="error" id="error-fecha" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="hora_inicio">Hora inicio <span aria-hidden="true">*</span></label>
+                                <input type="time" id="hora_inicio" name="hora_inicio" required aria-required="true" aria-describedby="error-hora">
+                                <span class="error" id="error-hora" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="duracion">Duración (minutos) <span aria-hidden="true">*</span></label>
+                                <input type="number" id="duracion" name="duracion" min="30" max="480" required aria-required="true" aria-describedby="error-duracion">
+                                <span class="error" id="error-duracion" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="cantidad">Cantidad de estudiantes <span aria-hidden="true">*</span></label>
+                                <input type="number" id="cantidad" name="cantidad" min="1" max="200" required aria-required="true" aria-describedby="error-cantidad">
+                                <span class="error" id="error-cantidad" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="descripcion">Motivo / Descripción</label>
+                                <textarea id="descripcion" name="descripcion" rows="3" aria-describedby="error-descripcion"></textarea>
+                                <span class="error" id="error-descripcion" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn-enviar">Enviar Solicitud</button>
+                                <div id="success-message" class="success" role="status" aria-live="polite" hidden></div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </article>
         </div>
@@ -286,6 +343,7 @@
         <div class="footer-copyright">
             <p>© 2026 Escuela Laura Robles Silva. Todos los derechos reservados.</p>
         </div>
-    </footer>
+</footer>
+    <script src="assets/script.js"></script>
 </body>
 </html>

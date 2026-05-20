@@ -388,6 +388,27 @@ header {
     background-color: #fff;
 }
 
+/* =========================================
+   ESTILOS PARA FORMULARIO DE SOLICITUD
+   ========================================= */
+.solicitud-sala { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed var(--borde-lateral); }
+.solicitud-sala h4 { color: var(--color-rojo); margin-bottom: 0.75rem; }
+.solicitud-sala .form-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 0.75rem; }
+.solicitud-sala label { font-weight: 700; color: var(--texto-principal); }
+.solicitud-sala input[type="text"], .solicitud-sala input[type="email"], .solicitud-sala input[type="date"], .solicitud-sala input[type="time"], .solicitud-sala input[type="number"], .solicitud-sala textarea {
+    padding: 8px 10px; border: 1px solid var(--borde-lateral); border-radius: 6px; background: white; color: var(--texto-principal);
+}
+.solicitud-sala .form-actions { display: flex; gap: 12px; align-items: center; margin-top: 0.5rem; }
+.solicitud-sala .btn-enviar { background: var(--color-rojo); color: white; border: none; padding: 0.6rem 1rem; border-radius: 8px; cursor: pointer; font-weight: 700; }
+.solicitud-sala .btn-enviar:hover { opacity: 0.95; }
+
+.error { color: #8b0000; font-size: 0.9rem; min-height: 1.1rem; }
+.input-error { outline: 2px solid #e06a6a; }
+.success { color: #145214; font-weight: 700; }
+
+/* Visually hidden utility for screen readers */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
 .card-vms.mision {
     background-color: #fff;
     color: var(--texto-principal);
