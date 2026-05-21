@@ -141,6 +141,53 @@ header {
 .nav-link { text-decoration: none; color: var(--color-rojo); display: flex; flex-direction: column; align-items: center; font-weight: 600; cursor: pointer; }
 .icono-img { height: 25px; margin-bottom: 5px; }
 
+.hamburguer {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--color-rojo);
+    transition: .3s ease;
+}
+
+@media (max-width: 880px){
+    .hamburguer{
+        display: block;
+    }
+    .hamburguer.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburguer.active .bar:nth-child(1) {
+        transform: translateY(-8px) rotate(45deg);
+    }
+    .hamburguer.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .navegacion {
+        position: fixed;
+        left: -100%;
+        top: 110px;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--fondo-sitio);
+        width: 100%;
+        transition: .3s;
+        padding: 0;
+    }
+    .navegacion.active {
+        left: 0;
+    }
+
+    .nav-link {
+        padding: 1rem 0;
+    }
+}
+
 /* =========================================
    DROPDOWN ACCESIBILIDAD (ESTILO IMAGEN)
    ========================================= */

@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escuela Laura Robles Silva</title>
     <link rel="icon" type="image/png" href="logoLRS.png">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/CSS/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="assets/JS/script.js"></script>
+    <script src="assets/JS/menu_hamburguesa.js"></script>
 </head>
 <body id="top">
     <div class="banner-matriculas">
@@ -30,8 +32,14 @@
                 <p>Copiapó, Chile · Fundado en 1860</p>
             </div>
         </div>
+
+        <div class="hamburguer" id="btn-hamburguer">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
         
-        <nav class="navegacion">
+        <nav class="navegacion" id="menu-navegacion">
             <a href="#top" class="nav-link">
                 <img src="imagenes/logo_inicio.png" alt="Inicio" class="icono-img"> Inicio
             </a>
@@ -64,13 +72,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="usuario">
+                <a href="#" class="btn-login">
+                    <span>Iniciar Sesión</span>
+                </a>
+            </div>
         </nav>
 
-        <div class="usuario">
-            <a href="#" class="btn-login">
-                <span>Iniciar Sesión</span>
-            </a>
-        </div>
     </header>
 
     <section class="banner-imagen">
@@ -344,6 +353,5 @@
             <p>© 2026 Escuela Laura Robles Silva. Todos los derechos reservados.</p>
         </div>
 </footer>
-    <script src="assets/script.js"></script>
 </body>
 </html>
