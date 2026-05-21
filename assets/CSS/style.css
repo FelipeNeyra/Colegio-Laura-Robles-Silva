@@ -639,12 +639,13 @@ header {
     display: flex;
     padding: 2rem 0;
     gap: 2rem;
-    max-width: 1000px;
+    max-width: 1600px;
+    width: 95vw;
     margin: 0 auto;
 }
 
 .menu-lateral {
-    width: 230px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     gap: 0.65rem;
@@ -962,6 +963,281 @@ header {
 .footer-copyright { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #333; font-size: 0.8rem; opacity: 0.7; }
 
 /* =========================================
+   SISTEMA DE COMUNICADOS Y FAVORITOS
+   ========================================= */
+.comunicados-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.filtros-comunicados {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    gap: 1rem;
+    align-items: end;
+    padding: 1.3rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.filtros-comunicados button {
+    justify-self: end;
+}
+
+.btn-toggle-favoritos {
+    justify-self: end;
+}
+
+.filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filtro-grupo label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--texto-principal);
+}
+
+.filtro-grupo input[type="text"],
+.filtro-grupo input[type="date"],
+.filtro-grupo select {
+    padding: 0.6rem;
+    border: 1px solid var(--borde-lateral);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    min-width: 0;
+    background-color: #fff;
+    color: var(--texto-principal);
+}
+
+.btn-limpiar-filtros {
+    background-color: var(--color-rojo);
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: opacity 0.2s ease;
+}
+
+.btn-limpiar-filtros:hover,
+.btn-toggle-favoritos:hover {
+    opacity: 0.9;
+}
+
+.btn-toggle-favoritos {
+    background-color: transparent;
+    border: 2px solid var(--color-rojo);
+    color: var(--color-rojo);
+    border-radius: 6px;
+    padding: 0.6rem 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-toggle-favoritos.activo {
+    background-color: var(--color-rojo);
+    color: white;
+}
+
+.comunicados-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(320px, 1fr);
+    gap: 1.5rem;
+    max-width: 1500px;
+    width: 100%;
+    min-width: 0;
+}
+
+.comunicados-lista {
+    min-height: 320px;
+    min-width: 0;
+}
+
+.lista-comunicados {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    gap: 1rem;
+    min-width: 0;
+}
+
+.comunicado-card {
+    padding: 1.2rem;
+    background-color: #fff;
+    border: 2px solid rgba(219, 53, 61, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    width: 100%;
+}
+
+.comunicado-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.comunicado-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.comunicado-fecha {
+    font-size: 0.85rem;
+    color: var(--color-rojo);
+    font-weight: 700;
+}
+
+.comunicado-titulo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--texto-principal);
+    margin: 0;
+}
+
+.comunicado-tipo {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    background-color: rgba(219, 53, 61, 0.15);
+    color: var(--color-rojo);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.comunicado-descripcion {
+    font-size: 0.95rem;
+    color: var(--texto-secundario);
+    margin: 0.5rem 0 0 0;
+}
+
+.comunicado-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: flex-start;
+}
+
+.btn-favorito {
+    background: none;
+    border: 2px solid var(--color-rojo);
+    color: var(--color-rojo);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    min-width: 50px;
+}
+
+.btn-favorito:hover {
+    background-color: var(--color-rojo);
+    color: white;
+}
+
+.btn-favorito.activo {
+    background-color: var(--color-rojo);
+    color: white;
+}
+
+.comunicados-favoritos {
+    background-color: #fff;
+    border: 2px solid rgba(219, 53, 61, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    height: fit-content;
+    min-width: 280px;
+}
+
+.favoritos-oculta {
+    display: none !important;
+}
+
+.comunicados-favoritos h3 {
+    margin-bottom: 1rem;
+    color: var(--color-rojo);
+    font-size: 1.3rem;
+}
+
+.favoritos-lista {
+    display: grid;
+    gap: 0.8rem;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.favorito-item {
+    padding: 0.8rem;
+    background-color: rgba(219, 53, 61, 0.08);
+    border-left: 3px solid var(--color-rojo);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.favorito-item:hover {
+    background-color: rgba(219, 53, 61, 0.15);
+}
+
+.favorito-titulo {
+    font-weight: 700;
+    color: var(--texto-principal);
+}
+
+.favorito-fecha {
+    font-size: 0.85rem;
+    color: var(--texto-secundario);
+}
+
+.cargando {
+    text-align: center;
+    color: var(--texto-secundario);
+    padding: 2rem;
+}
+
+body.tema-oscuro .filtros-comunicados {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro .filtro-grupo input[type="text"],
+body.tema-oscuro .filtro-grupo input[type="date"],
+body.tema-oscuro .filtro-grupo select {
+    background-color: #333333;
+    border-color: var(--borde-lateral);
+    color: var(--texto-principal);
+}
+
+body.tema-oscuro .comunicado-card,
+body.tema-oscuro .comunicados-favoritos {
+    background-color: #505050;
+    border-color: rgba(219, 53, 61, 0.45);
+}
+
+body.tema-oscuro .comunicado-titulo,
+body.tema-oscuro .favorito-titulo {
+    color: var(--texto-principal);
+}
+
+body.tema-oscuro .comunicado-descripcion,
+body.tema-oscuro .favorito-fecha {
+    color: var(--texto-secundario);
+}
+
+/* =========================================
    RESPONSIVE DESIGN
    ========================================= */
 @media (max-width: 992px) { /* Ajustes para tabletas y pantallas medianas */
@@ -979,6 +1255,10 @@ header {
     .servicio-contenido h3 { font-size: 1.1rem; }
     .seccion-servicios { padding: 2rem 1rem; }
     .seccion-servicios h2 { font-size: 2rem; }
+    .comunicados-layout { grid-template-columns: 1fr; }
+    .lista-comunicados { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+
+    .lista-comunicados { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) { /* Ajustes para móviles grandes y pantallas pequeñas */
@@ -1008,6 +1288,11 @@ header {
     .contenido-principal { padding: 1rem; }
     .menu-lateral { width: 100%; padding: 0.8rem; }
     .area-textos { padding: 1.2rem; }
+    .filtros-comunicados { grid-template-columns: 1fr; }
+    .filtros-comunicados button {
+        width: 100%;
+        justify-self: stretch;
+    }
     .footer-contenedor { flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; }
     .footer-info, .footer-social { width: 100%; max-width: 480px; }
     .footer-info h3, .footer-social h3 { text-align: center; }
