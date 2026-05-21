@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
     //Botón para abrir y cerrar el menú 
-    const btnClaro_Oscuro = document.getElementById('menu-toggle');
+    const btnMenu_Accesibilidad = document.getElementById('menu-toggle');
     const menuContenido = document.getElementById('dropdownContenido');
 
-    if (!btnClaro_Oscuro || !menuContenido) return;
+    if (!btnMenu_Accesibilidad || !menuContenido) return;
 
-    btnClaro_Oscuro.checked = false;
+    btnMenu_Accesibilidad.checked = false;
     menuContenido.style.display = 'none'; 
     //El campo display empieza en none para que no se mueste el menú al abrir la pagína
 
     //Función que se activa al hacer click en el botón
-    btnClaro_Oscuro.addEventListener('change', () => {
-        if (btnClaro_Oscuro.checked) {
+    btnMenu_Accesibilidad.addEventListener('change', () => {
+        if (btnMenu_Accesibilidad.checked) {
             //Despliegue del menú usando add() y modificando los campos necesarios
             menuContenido.classList.remove('fondo-cierra-menu');
             menuContenido.classList.add('dropdown-contenido');
@@ -27,5 +27,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    miStorage = window.localStorage;
+    const temaGuardado = miStorage.getItem('theme');
+    console.log(temaGuardado)
 
-});
+    if (temaGuardado == "tema_oscuro") {
+        document.body.classList.add('tema-oscuro');
+    }
+
+    const btnTheme_Claro = document.getElementById('btnTheme_Claro');
+    const btnTheme_Oscuro = document.getElementById('btnTheme_Oscuro');
+
+    btnTheme_Claro.addEventListener('click', () => {
+        document.body.classList.remove('tema-oscuro');
+        let temaActual = ["tema_claro"]
+        miStorage.setItem("theme", JSON.stringify(temaActual));
+    })
+    
+    btnTheme_Oscuro.addEventListener('click', () => {
+        document.body.classList.add('tema-oscuro');
+        let temaActual = ["tema_oscuro"]
+        miStorage.setItem("theme", JSON.stringify(temaActual));
+    })
+
+
+})

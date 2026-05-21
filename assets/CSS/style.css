@@ -9,8 +9,8 @@
     --borde-lateral: #bbbbbb;
 }
 
-/* Lógica de Modo Oscuro sin JS */
-body:has(#theme-oscuro:checked) {
+/* Lógica de Modo Oscuro con JS */
+.tema-oscuro {
     --fondo-sitio: #222222;
     --texto-principal: #ffffff;
     --texto-secundario: #cccccc;
