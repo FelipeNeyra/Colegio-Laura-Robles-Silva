@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form-solicitud-sala');
     const successMessage = document.getElementById('success-message');
+    const solicitudesContainer = document.getElementById('solicitudes-listado');
+    const STORAGE_KEY = 'solicitudesSala';
 
     function escapeHTML(str) {
         if (!str) return '';
@@ -10,11 +12,38 @@ document.addEventListener('DOMContentLoaded', function () {
                   .replace(/"/g, '&quot;')
                   .replace(/'/g, '&#039;');
     }
-
+ 
     function validateEmail(email) {
         // Regex sencillo, suficiente para validación en cliente
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
+    }
+
+    function getSolicitudes() {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    }
+
+    function renderSolicitudes() {
+        if (!solicitudesContainer) return;
+        const solicitudes = getSolicitudes();
+        if (!solicitudes.length) {
+            solicitudesContainer.innerHTML = '<p class="lista-vacia">Aún no hay reservas registradas. Envía una solicitud para verlas aquí.</p>';
+            return;
+        }
+
+        solicitudesContainer.innerHTML = solicitudes.map((solicitud, index) => {
+            return `
+                <article class="solicitud-card">
+                    <h4>Reserva ${index + 1}: ${solicitud.asignatura}</h4>
+                    <p><span>Profesor/a:</span> ${solicitud.nombre}</p>
+                    <p><span>Fecha:</span> ${solicitud.fecha}</p>
+                    <p><span>Hora de inicio:</span> ${solicitud.hora_inicio}</p>
+                    <p><span>Duración:</span> ${solicitud.duracion} minutos</p>
+                    <p><span>Estudiantes:</span> ${solicitud.cantidad}</p>
+                    <p><span>Motivo:</span> ${solicitud.descripcion || 'No especificado'}</p>
+                </article>
+            `;
+        }).join('');
     }
 
     function setError(input, message) {
@@ -99,10 +128,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Guardar en localStorage
         try {
-            const storageKey = 'solicitudesSala';
-            const existing = JSON.parse(localStorage.getItem(storageKey) || '[]');
+            const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
             existing.push(solicitud);
-            localStorage.setItem(storageKey, JSON.stringify(existing));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
 
             successMessage.textContent = `Solicitud guardada localmente. Total guardadas: ${existing.length}`;
             successMessage.hidden = false;
@@ -110,12 +138,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Limpiar formulario
             form.reset();
+            renderSolicitudes();
         } catch (err) {
             console.error('Error guardando en localStorage', err);
             successMessage.textContent = 'La solicitud fue procesada, pero no se pudo guardar localmente.';
             successMessage.hidden = false;
         }
     });
+
+    renderSolicitudes();
 
     // Limpieza inline al modificar campos
     form.querySelectorAll('input, textarea').forEach(function (el) {

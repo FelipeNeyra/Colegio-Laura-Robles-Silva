@@ -44,8 +44,8 @@
             <a href="#top" class="nav-link">
                 <img src="imagenes/logo_inicio.png" alt="Inicio" class="icono-img"> Inicio
             </a>
-            <a href="#nosotros" class="nav-link">
-                <img src="imagenes/logo_nosotros.png" alt="Nosotros" class="icono-img"> Nosotros
+            <a href="#solicitud" class="nav-link">
+                <img src="imagenes/logo_nosotros.png" alt="Solicitudes" class="icono-img"> Solicitudes
             </a>
             <a href="#contacto" class="nav-link">
                 <img src="imagenes/logo_contacto.png" alt="Contacto" class="icono-img"> Contacto
@@ -247,7 +247,7 @@
                     </ul>
                 </div>
             </article>
-
+ 
             <article class="servicio">
                 <div class="servicio-imagen">
                     <img src="imagenes/computacion.jpeg" alt="Sala de computación">
@@ -260,8 +260,17 @@
                         <li>Visualización de disponibilidad</li>
                         <li>Normativa de uso responsable</li>
                     </ul>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="solicitud" class="seccion-solicitud">
+        <div class="contenedor-solicitud">
+            <h2 id="form-solicitud-title">Solicitud de uso - Sala de Computación</h2>
+            <div class="solicitud-layout">
+                <aside class="solicitud-panel">
                     <div class="solicitud-sala">
-                        <h4 id="form-solicitud-title">Solicitud de uso - Sala de Computación</h4>
                         <form id="form-solicitud-sala" novalidate aria-labelledby="form-solicitud-title">
                             <div class="form-row">
                                 <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
@@ -317,8 +326,15 @@
                             </div>
                         </form>
                     </div>
-                </div>
-            </article>
+                </aside>
+
+                <aside class="lista-solicitudes">
+                    <h3>Solicitudes registradas</h3>
+                    <div id="solicitudes-listado" class="solicitudes-listado">
+                        <p class="lista-vacia">Aún no hay reservas registradas. Envía una solicitud para verlas aquí.</p>
+                    </div>
+                </aside>
+            </div>
         </div>
     </section>
 
