@@ -1211,6 +1211,8 @@ header {
 
 body.tema-oscuro .filtros-comunicados {
     background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
 }
 
 body.tema-oscuro .filtro-grupo input[type="text"],
@@ -1219,6 +1221,18 @@ body.tema-oscuro .filtro-grupo select {
     background-color: #333333;
     border-color: var(--borde-lateral);
     color: var(--texto-principal);
+}
+
+body.tema-oscuro .btn-limpiar-filtros {
+    background-color: #db3540;
+    color: white;
+}
+
+body.tema-oscuro .comunicados-lista,
+body.tema-oscuro .lista-comunicados,
+body.tema-oscuro .comunicados-favoritos,
+body.tema-oscuro .comunicados-container {
+    background-color: transparent;
 }
 
 body.tema-oscuro .comunicado-card,
@@ -1233,8 +1247,24 @@ body.tema-oscuro .favorito-titulo {
 }
 
 body.tema-oscuro .comunicado-descripcion,
-body.tema-oscuro .favorito-fecha {
+body.tema-oscuro .favorito-fecha,
+body.tema-oscuro .comunicado-fecha,
+body.tema-oscuro .comunicado-tipo {
     color: var(--texto-secundario);
+}
+
+body.tema-oscuro .comunicado-tipo {
+    background-color: rgba(219, 53, 61, 0.18);
+}
+
+body.tema-oscuro .favorito-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left-color: rgba(219, 53, 61, 0.85);
+    color: var(--texto-principal);
+}
+
+body.tema-oscuro .comunicados-favoritos h3 {
+    color: var(--texto-principal);
 }
 
 /* =========================================
