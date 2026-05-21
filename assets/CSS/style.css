@@ -155,9 +155,17 @@ header {
     transition: .3s ease;
 }
 
-@media (max-width: 880px){
+@media (max-width: 992px){
+    header {
+        flex-wrap: wrap;
+        justify-content: flex;
+    }
     .hamburguer{
         display: block;
+        position: relative;
+        z-index: 1002;
+        order: 1;
+        margin-right: 1rem;
     }
     .hamburguer.active .bar:nth-child(2) {
         opacity: 0;
@@ -169,15 +177,17 @@ header {
         transform: translateY(-8px) rotate(-45deg);
     }
     .navegacion {
-        position: fixed;
+        position: absolute;
         left: -100%;
-        top: 110px;
+        top: 100%;
         gap: 0;
         flex-direction: column;
         background-color: var(--fondo-sitio);
         width: 100%;
-        transition: .3s;
-        padding: 0;
+        transition: left .3s ease;
+        padding: 0.5rem 0;
+        z-index: 1001;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.12);
     }
     .navegacion.active {
         left: 0;
@@ -203,7 +213,7 @@ header {
     right: 0;
     padding: 20px;
     border: 1px solid var(--borde-lateral);
-    z-index: 100;
+    z-index: 1002;
 }
 
 /* Mostrar menú al marcar checkbox sin JS */
@@ -868,11 +878,13 @@ header {
     .lema-escuela { padding: 1.5rem; margin-top: 1.5rem; }
     .lema-escuela p { font-size: 1rem; }
     
-    header { flex-direction: column; align-items: stretch; padding: 1rem 1rem 0.5rem; }
-    .logo-y-titulos { width: 100%; justify-content: center; margin-bottom: 1rem; }
-    .navegacion { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-right: 0; }
-    .nav-link { flex-direction: row; align-items: center; gap: 0.5rem; padding: 0.5rem 0.8rem; font-size: 0.95rem; }
-    .icono-img { margin-bottom: 0; height: 20px; }
+    header { flex-direction: row; align-items: center; justify-content: flex-start; padding: 1rem 1rem 0.5rem; }
+    .logo-y-titulos { width: auto; justify-content: flex-start; margin-bottom: 0; }
+    .hamburguer { order: 1; margin-right: 1rem; }
+    .navegacion { width: 100%; display: grid; grid-template-columns: 1fr; justify-content: center; gap: 0.8rem; margin-right: 0; }
+    .navegacion .btn-login {justify-content: center;}
+    .nav-link { flex-direction: column; align-items: center; gap: 0.5rem; padding: 0.5rem 0.8rem; font-size: 0.95rem; }
+    .icono-img { flex-direction: column; margin-right: 2; height: 20px; }
     .dropdown { width: auto; }
     .dropdown-contenido { min-width: auto; width: auto; max-width: 250px; padding: 15px; font-size: 0.9rem; }
     .usuario { width: 100%; margin-top: 1rem; display: flex; justify-content: center; }
