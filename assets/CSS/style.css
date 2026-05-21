@@ -18,48 +18,48 @@
 }
 
 /* Funcionamiento de Cartas en Modo Oscuro (#505050) */
-body:has(#theme-oscuro:checked) .card-vms.vision,
-body:has(#theme-oscuro:checked) .card-vms.mision,
-body:has(#theme-oscuro:checked) .card-vms.sellos {
+body.tema-oscuro .card-vms.vision,
+body.tema-oscuro .card-vms.mision,
+body.tema-oscuro .card-vms.sellos {
     background-color: #505050;
 }
-body:has(#theme-oscuro:checked) .card-vms p,
-body:has(#theme-oscuro:checked) .card-vms li,
-body:has(#theme-oscuro:checked) .card-vms ol {
+body.tema-oscuro .card-vms p,
+body.tema-oscuro .card-vms li,
+body.tema-oscuro .card-vms ol {
     color: var(--texto-secundario);
 }
-body:has(#theme-oscuro:checked) .card-vms.mision p,
-body:has(#theme-oscuro:checked) .card-vms.sellos li {
+body.tema-oscuro .card-vms.mision p,
+body.tema-oscuro .card-vms.sellos li {
     color: var(--texto-secundario);
 }
 
 /* Funcionamiento del contenido principal en Modo Oscuro (#505050) */
-body:has(#theme-oscuro:checked) .menu-lateral,
-body:has(#theme-oscuro:checked) .area-textos,
-body:has(#theme-oscuro:checked) .contenido-mes,
-body:has(#theme-oscuro:checked) .selector-meses {
+body.tema-oscuro .menu-lateral,
+body.tema-oscuro .area-textos,
+body.tema-oscuro .contenido-mes,
+body.tema-oscuro .selector-meses {
     background-color: #505050;
     color: var(--texto-principal);
 }
-body:has(#theme-oscuro:checked) .selector-meses {
+body.tema-oscuro .selector-meses {
     border-color: var(--borde-lateral);
 }
-body:has(#theme-oscuro:checked) .menu-lateral .item-lateral {
+body.tema-oscuro .menu-lateral .item-lateral {
     color: var(--texto-secundario);
 }
-body:has(#theme-oscuro:checked) .menu-lateral .item-lateral:hover {
+body.tema-oscuro .menu-lateral .item-lateral:hover {
     color: var(--color-rojo);
 }
-body:has(#theme-oscuro:checked) .texto-lectura p,
-body:has(#theme-oscuro:checked) .contenido-mes p {
+body.tema-oscuro .texto-lectura p,
+body.tema-oscuro .contenido-mes p {
     color: var(--texto-secundario);
 }
 
 /* Sección "Juntos celebramos cada logro" en Modo Oscuro (#505050) */
-body:has(#theme-oscuro:checked) .seccion-graduados {
+body.tema-oscuro .seccion-graduados {
     background-color: #505050;
 }
-body:has(#theme-oscuro:checked) .graduacion-texto p {
+body.tema-oscuro .graduacion-texto p {
     color: var(--texto-secundario);
 }
 

@@ -27,28 +27,36 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    miStorage = window.localStorage;
+    //Apartado para el modo claro y oscuro
+    const miStorage = window.localStorage;
     const temaGuardado = miStorage.getItem('theme');
-    console.log(temaGuardado)
 
-    if (temaGuardado == "tema_oscuro") {
+    //Verificar último estado almacenado en localStorage
+    if (temaGuardado === 'tema_oscuro') {
         document.body.classList.add('tema-oscuro');
+    } else {
+        document.body.classList.remove('tema-oscuro');
     }
 
     const btnTheme_Claro = document.getElementById('btnTheme_Claro');
     const btnTheme_Oscuro = document.getElementById('btnTheme_Oscuro');
 
-    btnTheme_Claro.addEventListener('click', () => {
-        document.body.classList.remove('tema-oscuro');
-        let temaActual = ["tema_claro"]
-        miStorage.setItem("theme", JSON.stringify(temaActual));
-    })
-    
-    btnTheme_Oscuro.addEventListener('click', () => {
-        document.body.classList.add('tema-oscuro');
-        let temaActual = ["tema_oscuro"]
-        miStorage.setItem("theme", JSON.stringify(temaActual));
-    })
+    //Se cambia el tono de fondo según el botón que se seleccione
+    if (btnTheme_Claro) {
+        btnTheme_Claro.addEventListener('click', () => {
+            document.body.classList.remove('tema-oscuro');
+            //Almacenmiento del estado en localStorage
+            miStorage.setItem('theme', 'tema_claro');
+        });
+    }
+
+    if (btnTheme_Oscuro) {
+        btnTheme_Oscuro.addEventListener('click', () => {
+            document.body.classList.add('tema-oscuro');
+            //Almacenmiento del estado en localStorage
+            miStorage.setItem('theme', 'tema_oscuro');
+        });
+    }
 
 
 })
