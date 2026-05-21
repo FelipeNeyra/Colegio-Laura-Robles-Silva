@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escuela Laura Robles Silva</title>
-    <link rel="icon" type="image/png" href="logoLRS.png">
+    <link rel="icon" type="image/png" href="imagenes/logoLRS.png">
     <link rel="stylesheet" href="assets/CSS/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="assets/JS/script.js"></script>
     <script src="assets/JS/menu_hamburguesa.js"></script>
+    <script src="assets/JS/menu_claro_oscuro.js"></script>
 </head>
 <body id="top">
     <div class="banner-matriculas">
@@ -50,15 +51,13 @@
                 <img src="imagenes/logo_contacto.png" alt="Contacto" class="icono-img"> Contacto
             </a>
             
-            <div class="dropdown">
+            <div class="dropdown" id="btnClaro/Oscuro">
                 <input type="checkbox" id="menu-toggle" class="input-oculto">
                 <label for="menu-toggle" class="nav-link" style="cursor:pointer; position: relative; z-index: 101;">
                     <img src="imagenes/logo_accesibilidad.png" alt="Accesibilidad" class="icono-img"> Accesibilidad
                 </label>
 
-                <label for="menu-toggle" class="fondo-cierra-menu"></label>
-
-                <div class="dropdown-contenido">
+                <div class="dropdown-contenido" id="dropdownContenido">
                     <label for="theme-claro" class="dropdown-item">☀️ Modo Claro</label>
                     <label for="theme-oscuro" class="dropdown-item">🌙 Modo Oscuro</label>
                     

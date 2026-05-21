@@ -216,9 +216,6 @@ header {
     z-index: 1002;
 }
 
-/* Mostrar menú al marcar checkbox sin JS */
-#menu-toggle:checked ~ .dropdown-contenido { display: flex; flex-direction: column; align-items: center; }
-
 /* Capa invisible para cerrar el menú */
 .fondo-cierra-menu {
     display: none;
@@ -227,7 +224,6 @@ header {
     z-index: 90; 
     cursor: default;
 }
-#menu-toggle:checked ~ .fondo-cierra-menu { display: block; }
 
 /*Opciones de modo claro y oscuro */
 .dropdown-item { width: 100%; padding: 10px; cursor: pointer; text-align: left; text-decoration: none; color: var(--texto-principal); display: block; }
