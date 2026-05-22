@@ -98,21 +98,24 @@ body.tema-oscuro .solicitud-sala textarea {
 /* =========================================
    ACCESIBILIDAD (TAMAÑOS DE FUENTE)
    ========================================= */
-body:has(#font-pequena:checked) p { font-size: 0.9rem !important; }
-body:has(#font-pequena:checked) .card-vms.sellos ol,
-body:has(#font-pequena:checked) .card-vms.sellos li { font-size: 0.9rem !important; }
+/* Tamaño de letra pequeña */
+body.font-pequena p { font-size: 0.9rem !important; }
+body.font-pequena .card-vms.sellos ol,
+body.font-pequena .card-vms.sellos li { font-size: 0.9rem !important; }
 
-body:has(#font-normal:checked) p { font-size: 1.1rem !important; }
-body:has(#font-normal:checked) .card-vms.sellos ol,
-body:has(#font-normal:checked) .card-vms.sellos li { font-size: 1.1rem !important; }
+/* Tamaño de letra normal */
+body.font-normal p { font-size: 1.1rem !important; }
+body.font-normal .card-vms.sellos ol,
+body.font-normal .card-vms.sellos li { font-size: 1.1rem !important; }
 
-body:has(#font-grande:checked) p { font-size: 1.4rem !important; }
-body:has(#font-grande:checked) .card-vms.sellos ol,
-body:has(#font-grande:checked) .card-vms.sellos li { font-size: 1.4rem !important; }
+/* Tamaño de letra grande */
+body.font-grande p { font-size: 1.4rem !important; }
+body.font-grande .card-vms.sellos ol,
+body.font-grande .card-vms.sellos li { font-size: 1.4rem !important; }
 
-body:has(#font-grande:checked) h2 { font-size: 3.5rem !important; }
+body.font-grande h2 { font-size: 3.5rem !important; }
 
-body:has(#font-grande:checked) .banner-texto h2 { font-size: 2.5rem !important; }
+body.font-grande .banner-texto h2 { font-size: 2.5rem !important; }
 
 /* =========================================
    BASE
@@ -164,11 +167,12 @@ header {
 
 .logo-y-titulos { display: flex; align-items: center; gap: 1rem; margin-right: auto; }
 .logo-escuela { height: 70px; }
-.titulos h1 { color: var(--color-rojo); font-size: 1.5rem; }
-.titulos p { color: var(--color-rojo); font-size: 0.9rem; font-weight: bold; }
+.titulos h1 { color: var(--color-rojo); font-size: 1.5rem; white-space: nowrap;}
+.titulos p { color: var(--color-rojo); font-size: 0.9rem; font-weight: bold; white-space: nowrap; }
 
 .navegacion { display: flex; gap: 2rem; align-items: center; margin-right: 3rem; }
 .nav-link { text-decoration: none; color: var(--color-rojo); display: flex; flex-direction: column; align-items: center; font-weight: 600; cursor: pointer; }
+
 .icono-img { height: 25px; margin-bottom: 5px; }
 
 .hamburguer {
@@ -246,6 +250,14 @@ header {
     z-index: 1002;
 }
 
+@media (max-width: 768px) {
+    .dropdown-contenido {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
 /* Capa invisible para cerrar el menú */
 .fondo-cierra-menu {
     display: none;
@@ -279,6 +291,7 @@ header {
     display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem;
     border: 2px solid var(--color-rojo); border-radius: 25px;
     color: var(--color-rojo); text-decoration: none; font-weight: 600; transition: 0.3s;
+    white-space: nowrap
 }
 .btn-login:hover { background-color: var(--color-rojo); color: white; }
 

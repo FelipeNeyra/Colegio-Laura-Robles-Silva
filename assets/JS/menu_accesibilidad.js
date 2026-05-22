@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    //Botón para abrir y cerrar el menú 
+    // ============================================
+    //Apartado para abrir y cerrar el menú 
     const btnMenu_Accesibilidad = document.getElementById('menu-toggle');
     const menuContenido = document.getElementById('dropdownContenido');
 
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // ============================================
     //Apartado para el modo claro y oscuro
     const miStorage = window.localStorage;
     const temaGuardado = miStorage.getItem('theme');
@@ -58,5 +60,49 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // ============================================
+    // Apartado para cambio de tamaño de letra
+    const fontSizeGuardado = miStorage.getItem('fontSize') || 'font-normal';
+
+    // Cargar tamaño de letra guardado al iniciar la página
+    document.body.classList.remove('font-pequena', 'font-normal', 'font-grande');
+    document.body.classList.add(fontSizeGuardado);
+
+    const btnFont_Pequena = document.getElementById('font-pequena');
+    const btnFont_Normal = document.getElementById('font-normal');
+    const btnFont_Grande = document.getElementById('font-grande');
+
+    // Manejador para botón de letra pequeña
+    if (btnFont_Pequena) {
+        btnFont_Pequena.addEventListener('change', () => {
+            if (btnFont_Pequena.checked) {
+                document.body.classList.remove('font-normal', 'font-grande');
+                document.body.classList.add('font-pequena');
+                miStorage.setItem('fontSize', 'font-pequena');
+            }
+        });
+    }
+
+    // Manejador para botón de letra normal
+    if (btnFont_Normal) {
+        btnFont_Normal.addEventListener('change', () => {
+            if (btnFont_Normal.checked) {
+                document.body.classList.remove('font-pequena', 'font-grande');
+                document.body.classList.add('font-normal');
+                miStorage.setItem('fontSize', 'font-normal');
+            }
+        });
+    }
+
+    // Manejador para botón de letra grande
+    if (btnFont_Grande) {
+        btnFont_Grande.addEventListener('change', () => {
+            if (btnFont_Grande.checked) {
+                document.body.classList.remove('font-pequena', 'font-normal');
+                document.body.classList.add('font-grande');
+                miStorage.setItem('fontSize', 'font-grande');
+            }
+        });
+    }
 
 })
