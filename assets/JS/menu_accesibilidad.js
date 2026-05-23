@@ -3,11 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
     //Apartado para abrir y cerrar el menú 
     const btnMenu_Accesibilidad = document.getElementById('menu-toggle');
     const menuContenido = document.getElementById('dropdownContenido');
+    const accesibilidadLabel = document.querySelector('label[for="menu-toggle"]');
 
     if (!btnMenu_Accesibilidad || !menuContenido) return;
 
     btnMenu_Accesibilidad.checked = false;
     menuContenido.style.display = 'none'; 
+    menuContenido.setAttribute('aria-hidden', 'true');
     //El campo display empieza en none para que no se mueste el menú al abrir la pagína
 
     //Función que se activa al hacer click en el botón
@@ -20,11 +22,23 @@ document.addEventListener('DOMContentLoaded', function () {
             menuContenido.style.display = 'flex';
             menuContenido.style.flexDirection = 'column';
             menuContenido.style.alignItems = 'center';
+            
+            // Actualizar atributos ARIA
+            menuContenido.setAttribute('aria-hidden', 'false');
+            if (accesibilidadLabel) {
+                accesibilidadLabel.setAttribute('aria-expanded', 'true');
+            }
         } else {
             //Cierre del menú, eliminando la clase que permite que se muestre
             menuContenido.classList.remove('dropdown-contenido');
             menuContenido.classList.add('fondo-cierra-menu');
             menuContenido.style.display = 'none';
+            
+            // Actualizar atributos ARIA
+            menuContenido.setAttribute('aria-hidden', 'true');
+            if (accesibilidadLabel) {
+                accesibilidadLabel.setAttribute('aria-expanded', 'false');
+            }
         }
     });
 
@@ -49,6 +63,16 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.classList.remove('tema-oscuro');
             //Almacenmiento del estado en localStorage
             miStorage.setItem('theme', 'tema_claro');
+            // Anunciar cambio de tema con aria-live
+            const announcement = document.createElement('div');
+            announcement.setAttribute('role', 'status');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.style.position = 'absolute';
+            announcement.style.left = '-10000px';
+            announcement.textContent = 'Modo claro activado';
+            document.body.appendChild(announcement);
+            setTimeout(() => announcement.remove(), 1000);
         });
     }
 
@@ -57,6 +81,16 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.classList.add('tema-oscuro');
             //Almacenmiento del estado en localStorage
             miStorage.setItem('theme', 'tema_oscuro');
+            // Anunciar cambio de tema con aria-live
+            const announcement = document.createElement('div');
+            announcement.setAttribute('role', 'status');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.style.position = 'absolute';
+            announcement.style.left = '-10000px';
+            announcement.textContent = 'Modo oscuro activado';
+            document.body.appendChild(announcement);
+            setTimeout(() => announcement.remove(), 1000);
         });
     }
 
@@ -79,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.body.classList.remove('font-normal', 'font-grande');
                 document.body.classList.add('font-pequena');
                 miStorage.setItem('fontSize', 'font-pequena');
+                announceTextSize('Tamaño de texto reducido');
             }
         });
     }
@@ -90,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.body.classList.remove('font-pequena', 'font-grande');
                 document.body.classList.add('font-normal');
                 miStorage.setItem('fontSize', 'font-normal');
+                announceTextSize('Tamaño de texto normal');
             }
         });
     }
@@ -101,8 +137,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.body.classList.remove('font-pequena', 'font-normal');
                 document.body.classList.add('font-grande');
                 miStorage.setItem('fontSize', 'font-grande');
+                announceTextSize('Tamaño de texto aumentado');
             }
         });
     }
 
-})
+    // Función auxiliar para anunciar cambios de tamaño de texto
+    function announceTextSize(message) {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('role', 'status');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.style.position = 'absolute';
+        announcement.style.left = '-10000px';
+        announcement.textContent = message;
+        document.body.appendChild(announcement);
+        setTimeout(() => announcement.remove(), 1000);
+    }
+});

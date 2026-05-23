@@ -105,21 +105,25 @@ document.addEventListener('DOMContentLoaded', function () {
         const container = document.getElementById('lista-comunicados');
         const comunicados = filtrarComunicados();
 
+        // Actualizar aria-busy mientras se actualiza el contenido
+        container.setAttribute('aria-busy', 'true');
+
         if (comunicados.length === 0) {
             container.innerHTML = '<p class="cargando">No se encontraron comunicados con los filtros seleccionados.</p>';
+            container.setAttribute('aria-busy', 'false');
             return;
         }
 
         container.innerHTML = comunicados.map(comunicado => `
-            <div class="comunicado-card" data-id="${comunicado.id}">
+            <div class="comunicado-card" data-id="${comunicado.id}" role="article">
                 <div class="comunicado-contenido">
                     <div class="comunicado-fecha">${mostrarFecha(comunicado.fecha)}</div>
                     <h4 class="comunicado-titulo">${comunicado.titulo}</h4>
-                    <span class="comunicado-tipo">${comunicado.tipo.charAt(0).toUpperCase() + comunicado.tipo.slice(1)}</span>
+                    <span class="comunicado-tipo" aria-label="Tipo: ${comunicado.tipo}">${comunicado.tipo.charAt(0).toUpperCase() + comunicado.tipo.slice(1)}</span>
                     <p class="comunicado-descripcion">${comunicado.descripcion}</p>
                 </div>
                 <div class="comunicado-botones">
-                    <button class="btn-favorito ${esFavorito(comunicado.id) ? 'activo' : ''}" data-id="${comunicado.id}">
+                    <button class="btn-favorito ${esFavorito(comunicado.id) ? 'activo' : ''}" data-id="${comunicado.id}" aria-label="${esFavorito(comunicado.id) ? 'Remover de favoritos' : 'Agregar a favoritos'}">
                         ${esFavorito(comunicado.id) ? '❤️' : '🤍'}
                     </button>
                 </div>
@@ -131,8 +135,21 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.addEventListener('click', () => {
                 const id = parseInt(btn.dataset.id, 10);
                 toggleFavorito(id);
+                // Anunciar cambio en favoritos
+                const isFav = esFavorito(id);
+                const announcement = document.createElement('div');
+                announcement.setAttribute('role', 'status');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.style.position = 'absolute';
+                announcement.style.left = '-10000px';
+                announcement.textContent = isFav ? 'Agregado a favoritos' : 'Removido de favoritos';
+                document.body.appendChild(announcement);
+                setTimeout(() => announcement.remove(), 1000);
             });
         });
+
+        container.setAttribute('aria-busy', 'false');
     }
 
     function renderizarFavoritos() {
@@ -145,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         container.innerHTML = favoritos.map(favorito => `
-            <div class="favorito-item" data-id="${favorito.id}">
+            <div class="favorito-item" data-id="${favorito.id}" role="button" tabindex="0" aria-label="Ir a comunicado: ${favorito.titulo}">
                 <div class="favorito-titulo">${favorito.titulo}</div>
                 <div class="favorito-fecha">${mostrarFecha(favorito.fecha)}</div>
             </div>
@@ -154,16 +171,27 @@ document.addEventListener('DOMContentLoaded', function () {
         // Scroll a comunicado al hacer click en favorito
         document.querySelectorAll('.favorito-item').forEach(item => {
             item.addEventListener('click', () => {
-                const comunicadoCard = document.querySelector(`.comunicado-card[data-id="${item.dataset.id}"]`);
-                if (comunicadoCard) {
-                    comunicadoCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    comunicadoCard.style.backgroundColor = 'rgba(219, 53, 61, 0.1)';
-                    setTimeout(() => {
-                        comunicadoCard.style.backgroundColor = '';
-                    }, 1000);
+                navegarAComunicado(item.dataset.id);
+            });
+            // Permitir navegación con Enter o Space
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navegarAComunicado(item.dataset.id);
                 }
             });
         });
+    }
+
+    function navegarAComunicado(id) {
+        const comunicadoCard = document.querySelector(`.comunicado-card[data-id="${id}"]`);
+        if (comunicadoCard) {
+            comunicadoCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            comunicadoCard.style.backgroundColor = 'rgba(219, 53, 61, 0.1)';
+            setTimeout(() => {
+                comunicadoCard.style.backgroundColor = '';
+            }, 1000);
+        }
     }
 
     // Event listeners para filtros

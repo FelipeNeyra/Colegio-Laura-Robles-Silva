@@ -31,12 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const solicitudes = getSolicitudes();
         if (!solicitudes.length) {
             solicitudesContainer.innerHTML = '<p class="lista-vacia">Aún no hay reservas registradas. Envía una solicitud para verlas aquí.</p>';
+            solicitudesContainer.setAttribute('aria-busy', 'false');
             return;
         }
 
         solicitudesContainer.innerHTML = solicitudes.map((solicitud, index) => {
             return `
-                <article class="solicitud-card">
+                <article class="solicitud-card" role="article" aria-label="Reserva ${index + 1}: ${solicitud.asignatura}">
                     <h4>Reserva ${index + 1}: ${solicitud.asignatura}</h4>
                     <p><span>Profesor/a:</span> ${solicitud.nombre}</p>
                     <p><span>Fecha:</span> ${solicitud.fecha}</p>
@@ -47,24 +48,37 @@ document.addEventListener('DOMContentLoaded', function () {
                 </article>
             `;
         }).join('');
+        solicitudesContainer.setAttribute('aria-busy', 'false');
     }
 
     function setError(input, message) {
         const err = document.getElementById('error-' + input.id);
-        if (err) err.textContent = message;
+        if (err) {
+            err.textContent = message;
+            // Establecer el rol de alerta para que se anuncie inmediatamente
+            err.setAttribute('role', 'alert');
+            err.setAttribute('aria-live', 'assertive');
+        }
         input.classList.add('input-error');
+        input.setAttribute('aria-invalid', 'true');
     }
 
     function clearError(input) {
         const err = document.getElementById('error-' + input.id);
-        if (err) err.textContent = '';
+        if (err) {
+            err.textContent = '';
+            err.removeAttribute('role');
+            err.removeAttribute('aria-live');
+        }
         input.classList.remove('input-error');
+        input.setAttribute('aria-invalid', 'false');
     }
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         successMessage.hidden = true;
         successMessage.textContent = '';
+        successMessage.setAttribute('aria-live', 'polite');
 
         const fields = [
             'nombre', 'asignatura', 'correo', 'fecha', 'hora_inicio', 'duracion', 'cantidad'
@@ -113,7 +127,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (!valid) {
-            if (firstInvalid) firstInvalid.focus();
+            if (firstInvalid) {
+                firstInvalid.focus();
+                // Anunciar que hay errores en el formulario
+                const announcement = document.createElement('div');
+                announcement.setAttribute('role', 'alert');
+                announcement.setAttribute('aria-live', 'assertive');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.style.position = 'absolute';
+                announcement.style.left = '-10000px';
+                announcement.textContent = 'El formulario tiene errores. Por favor, corrija los campos resaltados.';
+                document.body.appendChild(announcement);
+                setTimeout(() => announcement.remove(), 1000);
+            }
             return;
         }
 
@@ -139,6 +165,17 @@ document.addEventListener('DOMContentLoaded', function () {
             successMessage.hidden = false;
             successMessage.focus && successMessage.focus();
 
+            // Anunciar éxito
+            const announcement = document.createElement('div');
+            announcement.setAttribute('role', 'status');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.style.position = 'absolute';
+            announcement.style.left = '-10000px';
+            announcement.textContent = 'Solicitud guardada exitosamente';
+            document.body.appendChild(announcement);
+            setTimeout(() => announcement.remove(), 1000);
+
             // Limpiar formulario
             form.reset();
             renderSolicitudes();
@@ -146,6 +183,17 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error guardando en localStorage', err);
             successMessage.textContent = 'La solicitud fue procesada, pero no se pudo guardar localmente.';
             successMessage.hidden = false;
+            
+            // Anunciar error
+            const announcement = document.createElement('div');
+            announcement.setAttribute('role', 'alert');
+            announcement.setAttribute('aria-live', 'assertive');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.style.position = 'absolute';
+            announcement.style.left = '-10000px';
+            announcement.textContent = 'Hubo un error al guardar la solicitud';
+            document.body.appendChild(announcement);
+            setTimeout(() => announcement.remove(), 1000);
         }
     });
 

@@ -13,6 +13,7 @@
     <script src="assets/JS/menu_accesibilidad.js"></script>
     <script src="assets/JS/script_seccion_comunicados.js"></script>
     <script src="assets/JS/script_formulario.js"></script>
+    <script src="assets/JS/script_tabs_aria.js"></script>
 </head>
 <body id="top">
     <div class="banner-matriculas">
@@ -35,13 +36,13 @@
             </div>
         </div>
 
-        <div class="hamburguer" id="btn-hamburguer">
+        <button class="hamburguer" id="btn-hamburguer" aria-expanded="false" aria-controls="menu-navegacion" aria-label="Abrir menú de navegación">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </div>
+        </button>
         
-        <nav class="navegacion" id="menu-navegacion">
+        <nav class="navegacion" id="menu-navegacion" aria-label="Navegación principal">
             <a href="#top" class="nav-link">
                 <img src="imagenes/logo_inicio.png" alt="Inicio" class="icono-img"> Inicio
             </a>
@@ -54,11 +55,11 @@
             
             <div class="dropdown" id="btnClaro/Oscuro">
                 <input type="checkbox" id="menu-toggle" class="input-oculto">
-                <label for="menu-toggle" class="nav-link" style="cursor:pointer; position: relative; z-index: 101;">
+                <label for="menu-toggle" class="nav-link" style="cursor:pointer; position: relative; z-index: 101;" aria-expanded="false" aria-haspopup="menu" aria-controls="dropdownContenido">
                     <img src="imagenes/logo_accesibilidad.png" alt="Accesibilidad" class="icono-img"> Accesibilidad
                 </label>
 
-                <div class="dropdown-contenido" id="dropdownContenido">
+                <div class="dropdown-contenido" id="dropdownContenido" role="menu" aria-hidden="true">
                     <label for="theme-claro" class="dropdown-item" id="btnTheme_Claro">☀️ Modo Claro</label>
                     <label for="theme-oscuro" class="dropdown-item" id="btnTheme_Oscuro">🌙 Modo Oscuro</label>
                     
@@ -82,14 +83,14 @@
 
     </header>
 
-    <section class="banner-imagen">
+    <section class="banner-imagen" role="region" aria-label="Carrusel de imágenes destacadas" aria-live="polite">
         <input type="radio" name="carrusel" id="slide1" class="input-oculto" checked>
         <input type="radio" name="carrusel" id="slide2" class="input-oculto">
         <input type="radio" name="carrusel" id="slide3" class="input-oculto">
         <input type="radio" name="carrusel" id="slide4" class="input-oculto">
         <input type="radio" name="carrusel" id="slide5" class="input-oculto">
 
-        <div class="carrusel-slides">
+        <div class="carrusel-slides" role="presentation">
             <div class="slide"><img src="imagenes/banner1.jpg" alt="Patio de la escuela"></div>
             <div class="slide"><img src="imagenes/banner2.jpg" alt="Estudiantes en el colegio"></div>
             <div class="slide"><img src="imagenes/banner3.jpeg" alt="Actividades de los alumnos"></div>
@@ -97,29 +98,29 @@
             <div class="slide"><img src="imagenes/banner5.jpeg" alt="Comunidad educativa"></div>
         </div>
 
-        <div class="flechas flechas-1">
-            <label for="slide5" class="flecha izq">❮</label>
-            <label for="slide2" class="flecha der">❯</label>
+        <div class="flechas flechas-1" role="presentation">
+            <label for="slide5" class="flecha izq" aria-label="Diapositiva anterior">❮</label>
+            <label for="slide2" class="flecha der" aria-label="Diapositiva siguiente">❯</label>
         </div>
 
-        <div class="flechas flechas-2">
-            <label for="slide1" class="flecha izq">❮</label>
-            <label for="slide3" class="flecha der">❯</label>
+        <div class="flechas flechas-2" role="presentation">
+            <label for="slide1" class="flecha izq" aria-label="Diapositiva anterior">❮</label>
+            <label for="slide3" class="flecha der" aria-label="Diapositiva siguiente">❯</label>
         </div>
 
-        <div class="flechas flechas-3">
-            <label for="slide2" class="flecha izq">❮</label>
-            <label for="slide4" class="flecha der">❯</label>
+        <div class="flechas flechas-3" role="presentation">
+            <label for="slide2" class="flecha izq" aria-label="Diapositiva anterior">❮</label>
+            <label for="slide4" class="flecha der" aria-label="Diapositiva siguiente">❯</label>
         </div>
 
-        <div class="flechas flechas-4">
-            <label for="slide3" class="flecha izq">❮</label>
-            <label for="slide5" class="flecha der">❯</label>
+        <div class="flechas flechas-4" role="presentation">
+            <label for="slide3" class="flecha izq" aria-label="Diapositiva anterior">❮</label>
+            <label for="slide5" class="flecha der" aria-label="Diapositiva siguiente">❯</label>
         </div>
 
-        <div class="flechas flechas-5">
-            <label for="slide4" class="flecha izq">❮</label>
-            <label for="slide1" class="flecha der">❯</label>
+        <div class="flechas flechas-5" role="presentation">
+            <label for="slide4" class="flecha izq" aria-label="Diapositiva anterior">❮</label>
+            <label for="slide1" class="flecha der" aria-label="Diapositiva siguiente">❯</label>
         </div>
 
         <div class="banner-texto">
@@ -171,23 +172,23 @@
         <input type="radio" name="pestanas" id="tab-comunicados" class="input-oculto">
         <input type="radio" name="pestanas" id="tab-galeria" class="input-oculto">
 
-        <aside class="menu-lateral">
-            <label for="tab-sobre" class="item-lateral" id="label-sobre">Sobre el Colegio</label>
-            <label for="tab-comunicados" class="item-lateral" id="label-comunicados">Comunicados</label>
-            <label for="tab-galeria" class="item-lateral" id="label-galeria">Actividades</label>
+        <aside class="menu-lateral" role="tablist" aria-label="Menú de secciones">
+            <label for="tab-sobre" class="item-lateral" id="label-sobre" role="tab" aria-selected="true" aria-controls="sec-sobre" tabindex="0">Sobre el Colegio</label>
+            <label for="tab-comunicados" class="item-lateral" id="label-comunicados" role="tab" aria-selected="false" aria-controls="sec-comunicados" tabindex="-1">Comunicados</label>
+            <label for="tab-galeria" class="item-lateral" id="label-galeria" role="tab" aria-selected="false" aria-controls="sec-galeria" tabindex="-1">Actividades</label>
         </aside>
 
         <div class="area-textos" id="nosotros">
-            <article id="sec-sobre" class="texto-lectura">
+            <article id="sec-sobre" class="texto-lectura" role="tabpanel" aria-labelledby="label-sobre">
                 <h2>Sobre el Colegio</h2>
                 <p>La Escuela Laura Robles Silva de la comuna de Copiapó, se fundó el 19 de noviembre de 1860 bajo el nombre de escuela superior de niñas, fue la primera escuela en  chile en incorporar educación parvularia en su enseñanza. En 1983, pasa a ser un establecimiento coeducacional (inclusión de varones) y en 1993 se traslada al sector de los Volcanes, donde cambia su nombre a ”Laura Robles Silva“. Su misión está centrada en el desarrollo de habilidades cognitivas, sociales, tecnológicas, científicas, deportivas y artísticas.  Hoy la Escuela orienta sus esfuerzos a mejorar su gestión institucional de tal manera de lograr avances significativos en las asignaturas troncales; con estudiantes críticos y participativos; con familias comprometidas en apoyar la labor educativa; con docentes que promueven el logro de los objetivos institucionales, que responden a las necesidades de la comunidad educativa y normativas educacionales vigentes.</p>
             </article>
 
-            <article id="sec-comunicados" class="texto-lectura">
+            <article id="sec-comunicados" class="texto-lectura" role="tabpanel" aria-labelledby="label-comunicados" hidden>
                 <h2>Comunicados</h2>
                 
                 <div class="comunicados-container">
-                    <div class="filtros-comunicados">
+                    <div class="filtros-comunicados" aria-label="Filtros de comunicados">
                         <div class="filtro-grupo">
                             <label for="buscar-comunicados">Buscar:</label>
                             <input type="text" id="buscar-comunicados" placeholder="Buscar por título...">
@@ -213,14 +214,14 @@
 
                     <div class="comunicados-layout">
                         <div class="comunicados-lista">
-                            <div id="lista-comunicados" class="lista-comunicados">
+                            <div id="lista-comunicados" class="lista-comunicados" aria-live="polite" aria-busy="true" aria-label="Lista de comunicados">
                                 <p class="cargando">Cargando comunicados...</p>
                             </div>
                         </div>
 
-                        <aside class="comunicados-favoritos">
+                        <aside class="comunicados-favoritos" aria-label="Comunicados marcados como favoritos">
                             <h3>❤️ Mis Favoritos</h3>
-                            <div id="favoritos-lista" class="favoritos-lista">
+                            <div id="favoritos-lista" class="favoritos-lista" aria-live="polite" aria-label="Lista de favoritos">
                                 <p class="lista-vacia">Aún no tienes favoritos. Marca comunicados con ❤️</p>
                             </div>
                         </aside>
@@ -228,11 +229,11 @@
                 </div>
             </article>
 
-            <article id="sec-galeria" class="texto-lectura">
+            <article id="sec-galeria" class="texto-lectura" role="tabpanel" aria-labelledby="label-galeria" hidden>
                 <h2>Galería de Actividades</h2>
 
                 <label for="meses" class="label-meses">Selecciona un mes:</label>
-                <select id="meses" class="selector-meses">
+                <select id="meses" class="selector-meses" aria-label="Seleccionar mes para ver actividades">
                     <option value="enero">Enero 2026</option>
                     <option value="febrero">Febrero 2026</option>
                     <option value="marzo">Marzo 2026</option>
@@ -247,12 +248,12 @@
                     <option value="diciembre">Diciembre 2026</option>
                 </select>
 
-                <div class="spinner-contenedor">
+                <div class="spinner-contenedor" role="status" aria-label="Cargando actividades" aria-hidden="true">
                     <div class="spinner"></div>
                     <p class="texto-carga">Cargando actividades...</p>
                 </div>
 
-                <div class="contenido-mes">
+                <div class="contenido-mes" aria-live="polite" aria-label="Galería de actividades del mes seleccionado">
                     <p>No hay actividades registradas para este mes.</p>
                 </div>
             </article>
