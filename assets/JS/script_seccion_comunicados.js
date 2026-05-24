@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
             favoritos.splice(index, 1);
         } else {
             const comunicado = comunicadosData.find(c => c.id === id);
+            console.log(comunicado)
             if (comunicado) favoritos.push(comunicado);
         }
         guardarFavoritos(favoritos);
@@ -78,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return obtenerFavoritos().some(f => f.id === id);
     }
 
+    //Mostrar comunicados en base a los filtros que establezca el usuario
     function filtrarComunicados() {
         const busqueda = document.getElementById('buscar-comunicados').value.toLowerCase();
         const tipo = document.getElementById('filtro-tipo').value;
@@ -92,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    //Convertir formato de fecha estándar a locar (CL)
     function obtenerFechaLocal(fechaISO) {
         const [year, month, day] = fechaISO.split('-').map(Number);
         return new Date(year, month - 1, day);
@@ -101,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return obtenerFechaLocal(fechaISO).toLocaleDateString('es-CL');
     }
 
+    //Función para mostrar el conjunto de comunicados
     function renderizarComunicados() {
         const container = document.getElementById('lista-comunicados');
         const comunicados = filtrarComunicados();
@@ -114,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+        //Mostrar gráficamente los comunicados obtenidos
         container.innerHTML = comunicados.map(comunicado => `
             <div class="comunicado-card" data-id="${comunicado.id}" role="article">
                 <div class="comunicado-contenido">
@@ -152,15 +157,18 @@ document.addEventListener('DOMContentLoaded', function () {
         container.setAttribute('aria-busy', 'false');
     }
 
+    //Función para mostrar la lista de comunicados favoritos
     function renderizarFavoritos() {
         const container = document.getElementById('favoritos-lista');
         const favoritos = obtenerFavoritos();
 
+        //Mensaje por defecto
         if (favoritos.length === 0) {
             container.innerHTML = '<p class="lista-vacia">Aún no tienes favoritos. Marca comunicados con ❤️</p>';
             return;
         }
 
+        //Graficar los comunicados marcados como favoritos
         container.innerHTML = favoritos.map(favorito => `
             <div class="favorito-item" data-id="${favorito.id}" role="button" tabindex="0" aria-label="Ir a comunicado: ${favorito.titulo}">
                 <div class="favorito-titulo">${favorito.titulo}</div>
@@ -183,6 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    //Redirigir al comunicado original después de seleccionar el mismo en la lista de favoritos
     function navegarAComunicado(id) {
         const comunicadoCard = document.querySelector(`.comunicado-card[data-id="${id}"]`);
         if (comunicadoCard) {

@@ -3,6 +3,7 @@ window.onload = () => {
     //Obtener una referencia del botón y del menú propio
     const botonMenu = document.getElementById("btn-hamburguer");
     const menu = document.getElementById("menu-navegacion");
+    console.log(menu.getAttribute("aria-hidden"))
     
     //Aplicar una función para poder hacer click en el botón
     botonMenu.addEventListener("click", () => {
@@ -20,5 +21,6 @@ window.onload = () => {
         } else {
             menu.setAttribute("aria-hidden", "true");
         }
+        console.log(menu.getAttribute("aria-hidden"))
     });
 }

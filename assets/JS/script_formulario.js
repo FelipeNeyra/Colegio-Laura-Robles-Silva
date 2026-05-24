@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const solicitudesContainer = document.getElementById('solicitudes-listado');
     const STORAGE_KEY = 'solicitudesSala';
 
+    //
     function escapeHTML(str) {
         if (!str) return '';
         return str.replace(/&/g, '&amp;')
@@ -15,26 +16,24 @@ document.addEventListener('DOMContentLoaded', function () {
                   .replace(/"/g, '&quot;')
                   .replace(/'/g, '&#039;');
     }
- 
-    function validateEmail(email) {
-        // Regex sencillo, suficiente para validación en cliente
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(String(email).toLowerCase());
-    }
 
     function getSolicitudes() {
         return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
     }
 
+    //Mostrar las solicitudes ya registradas en panel 'Solicitudes registradas'
     function renderSolicitudes() {
         if (!solicitudesContainer) return;
         const solicitudes = getSolicitudes();
+
+        //Mensaje que se muestra si no hay solicitudes
         if (!solicitudes.length) {
             solicitudesContainer.innerHTML = '<p class="lista-vacia">Aún no hay reservas registradas. Envía una solicitud para verlas aquí.</p>';
             solicitudesContainer.setAttribute('aria-busy', 'false');
             return;
         }
 
+        //Graficación de las solicitudes almacenadas
         solicitudesContainer.innerHTML = solicitudes.map((solicitud, index) => {
             return `
                 <article class="solicitud-card" role="article" aria-label="Reserva ${index + 1}: ${solicitud.asignatura}">
@@ -51,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         solicitudesContainer.setAttribute('aria-busy', 'false');
     }
 
+    //Mostrar mensajes de error según cada input
     function setError(input, message) {
         const err = document.getElementById('error-' + input.id);
         if (err) {
@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
         input.setAttribute('aria-invalid', 'true');
     }
 
+    //Establecer estado ARIA de error en una entrada del formulario
     function clearError(input) {
         const err = document.getElementById('error-' + input.id);
         if (err) {
@@ -74,8 +75,17 @@ document.addEventListener('DOMContentLoaded', function () {
         input.setAttribute('aria-invalid', 'false');
     }
 
+    //Validar estado de Email ingresado
+    function validateEmail(email) {
+        // Regex sencillo, suficiente para validación en cliente
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    //Función para envíar la solicitud (almacenarla en localStorage)
     form.addEventListener('submit', function (e) {
         e.preventDefault();
+        //Actualización de atributos ARIA
         successMessage.hidden = true;
         successMessage.textContent = '';
         successMessage.setAttribute('aria-live', 'polite');
@@ -87,12 +97,14 @@ document.addEventListener('DOMContentLoaded', function () {
         let firstInvalid = null;
         let valid = true;
 
+        //Validación de campos del formulario
         fields.forEach(function (id) {
             const input = document.getElementById(id);
             clearError(input);
 
             const value = (input && input.value) ? input.value.trim() : '';
 
+            //Validar campos vacíos
             if (!value) {
                 setError(input, 'Este campo es obligatorio.');
                 valid = false;
