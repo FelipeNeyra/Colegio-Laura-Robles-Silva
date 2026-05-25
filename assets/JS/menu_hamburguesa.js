@@ -31,8 +31,8 @@ window.onload = () => {
         }
     });
     
-    // Cerrar menú al hacer click en un enlace de navegación
-    const navLinks = menu.querySelectorAll('.nav-link');
+    // Cerrar menú al hacer click en un enlace de navegación (excepto dropdown)
+    const navLinks = menu.querySelectorAll('.nav-link:not([for="menu-toggle"])');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (botonMenu.classList.contains('active')) {
