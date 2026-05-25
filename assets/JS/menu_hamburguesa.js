@@ -23,4 +23,21 @@ window.onload = () => {
         }
         console.log(menu.getAttribute("aria-hidden"))
     });
+    
+    // Cerrar menú al presionar Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && botonMenu.classList.contains('active')) {
+            botonMenu.click();
+        }
+    });
+    
+    // Cerrar menú al hacer click en un enlace de navegación
+    const navLinks = menu.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (botonMenu.classList.contains('active')) {
+                botonMenu.click();
+            }
+        });
+    });
 }

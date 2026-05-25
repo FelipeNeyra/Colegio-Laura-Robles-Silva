@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnMenu_Accesibilidad = document.getElementById('menu-toggle');
     const menuContenido = document.getElementById('dropdownContenido');
     const accesibilidadLabel = document.querySelector('label[for="menu-toggle"]');
+    const dropdownItems = menuContenido?.querySelectorAll('.dropdown-item, .btn-font-css');
 
     if (!btnMenu_Accesibilidad || !menuContenido) return;
 
@@ -11,6 +12,20 @@ document.addEventListener('DOMContentLoaded', function () {
     menuContenido.style.display = 'none'; 
     menuContenido.setAttribute('aria-hidden', 'true');
     //El campo display empieza en none para que no se mueste el menú al abrir la pagína
+
+    // Hacer el label tabulable
+    if (accesibilidadLabel) {
+        accesibilidadLabel.setAttribute('tabindex', '0');
+        
+        // Permitir activar checkbox con Enter o Espacio cuando el label tiene foco
+        accesibilidadLabel.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                btnMenu_Accesibilidad.checked = !btnMenu_Accesibilidad.checked;
+                btnMenu_Accesibilidad.dispatchEvent(new Event('change'));
+            }
+        });
+    }
 
     //Función que se activa al hacer click en el botón
     btnMenu_Accesibilidad.addEventListener('change', () => {
@@ -28,6 +43,29 @@ document.addEventListener('DOMContentLoaded', function () {
             if (accesibilidadLabel) {
                 accesibilidadLabel.setAttribute('aria-expanded', 'true');
             }
+            
+            // Hacer items tabulables cuando el menú está abierto
+            if (dropdownItems) {
+                dropdownItems.forEach(item => {
+                    item.setAttribute('tabindex', '0');
+                });
+            }
+            
+            // Enfocar el primer item cuando se abre el menú
+            if (dropdownItems && dropdownItems.length > 0) {
+                setTimeout(() => dropdownItems[0].focus(), 100);
+            }
+            
+            // Manejar tecla Escape para cerrar el menú
+            function cerrarConEscape(e) {
+                if (e.key === 'Escape') {
+                    btnMenu_Accesibilidad.checked = false;
+                    btnMenu_Accesibilidad.dispatchEvent(new Event('change'));
+                    accesibilidadLabel?.focus();
+                    document.removeEventListener('keydown', cerrarConEscape);
+                }
+            }
+            document.addEventListener('keydown', cerrarConEscape);
         } else {
             //Cierre del menú, eliminando la clase que permite que se muestre
             menuContenido.classList.remove('dropdown-contenido');
@@ -39,6 +77,21 @@ document.addEventListener('DOMContentLoaded', function () {
             if (accesibilidadLabel) {
                 accesibilidadLabel.setAttribute('aria-expanded', 'false');
             }
+            
+            // Remover tabindex de items cuando el menú se cierra
+            if (dropdownItems) {
+                dropdownItems.forEach(item => {
+                    item.removeAttribute('tabindex');
+                });
+            }
+        }
+    });
+    
+    // Cerrar menú de accesibilidad al hacer click fuera
+    document.addEventListener('click', (e) => {
+        if (btnMenu_Accesibilidad.checked && !e.target.closest('.dropdown')) {
+            btnMenu_Accesibilidad.checked = false;
+            btnMenu_Accesibilidad.dispatchEvent(new Event('change'));
         }
     });
 

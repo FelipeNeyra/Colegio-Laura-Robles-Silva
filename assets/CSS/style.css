@@ -93,7 +93,16 @@ body.tema-oscuro .solicitud-sala textarea {
     color: var(--texto-principal);
 }
 
-.input-oculto { display: none; }
+/* Inputs ocultos pero accesibles para navegación con teclado */
+.input-oculto {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 /* =========================================
    ACCESIBILIDAD (TAMAÑOS DE FUENTE)
@@ -171,13 +180,51 @@ header {
 .titulos p { color: var(--color-rojo); font-size: 0.9rem; font-weight: bold; white-space: nowrap; }
 
 .navegacion { display: flex; gap: 2rem; align-items: center; margin-right: 3rem; }
-.nav-link { text-decoration: none; color: var(--color-rojo); display: flex; flex-direction: column; align-items: center; font-weight: 600; cursor: pointer; }
+.nav-link {
+    text-decoration: none;
+    color: var(--color-rojo);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.3rem;
+}
+
+.nav-link:focus-visible {
+    outline: 2px solid var(--color-rojo);
+    outline-offset: 2px;
+}
+
+body.tema-oscuro .nav-link:focus-visible {
+    outline-color: #ffcc00;
+}
 
 .icono-img { height: 25px; margin-bottom: 5px; }
 
 .hamburguer {
     display: none;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hamburguer:focus {
+    outline: none;
+}
+
+.hamburguer:focus-visible {
+    outline: 2px solid var(--color-rojo);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+body.tema-oscuro .hamburguer:focus-visible {
+    outline-color: #ffcc00;
 }
 
 .bar {
@@ -187,6 +234,7 @@ header {
     margin: 5px auto;
     background-color: var(--color-rojo);
     transition: .3s ease;
+    border-radius: 2px;
 }
 
 @media (max-width: 992px){
@@ -268,8 +316,32 @@ header {
 }
 
 /*Opciones de modo claro y oscuro */
-.dropdown-item { width: 100%; padding: 10px; cursor: pointer; text-align: left; text-decoration: none; color: var(--texto-principal); display: block; }
-.dropdown-item:hover { color: var(--color-rojo); }
+.dropdown-item {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    color: var(--texto-principal);
+    display: block;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    color: var(--color-rojo);
+    background-color: rgba(219, 53, 61, 0.1);
+}
+
+.dropdown-item:focus-visible {
+    outline: 2px solid var(--color-rojo);
+    outline-offset: 0;
+    background-color: rgba(219, 53, 61, 0.1);
+}
+
+body.tema-oscuro .dropdown-item:focus-visible {
+    outline-color: #ffcc00;
+}
 
 /*Linea divisoria y título del menú de accesibilidad*/
 .divisor-accesibilidad { border: 0.5px solid var(--borde-lateral); margin: 10px 0; width: 100%; }
