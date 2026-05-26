@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const solicitudesContainer = document.getElementById('solicitudes-listado');
     const STORAGE_KEY = 'solicitudesSala';
 
-    //
+    //Función para sanitización de caracteres invalidos (evitar inyecciones tipo XSS)
     function escapeHTML(str) {
         if (!str) return '';
         return str.replace(/&/g, '&amp;')

@@ -62,12 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function toggleFavorito(id) {
         const favoritos = obtenerFavoritos();
         const index = favoritos.findIndex(f => f.id === id);
-        console.log(index)
         if (index > -1) {
             favoritos.splice(index, 1);
         } else {
             const comunicado = comunicadosData.find(c => c.id === id);
-            console.log(comunicado)
             if (comunicado) favoritos.push(comunicado);
         }
         guardarFavoritos(favoritos);

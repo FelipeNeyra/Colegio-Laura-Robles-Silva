@@ -29,3 +29,19 @@ la sala.
 
 URL de sitio: https://felipeneyra.github.io/Colegio-Laura-Robles-Silva/
 Opción necesaria para transición de scroll: chrome://flags/#smooth-scrolling
+
+Para la segunda etapa del proyecto del sitio web de la Escuela Laura Robles Silva se implementarán mejoras utilizando JavaScript con el objetivo de agregar interactividad y mejorar la experiencia del usuario.
+Entre las funcionalidades planificadas se encuentran:
+1.- Implementación de un menú hamburguesa.
+
+2.- Creación y carga dinámica de comunicados y avisos utilizando arreglos de objetos JavaScript y manipulación del DOM.
+
+3.- Sistema de búsqueda y filtrado de comunicados en tiempo real (Buscar comunicados y avisos en base a un filtro proporcionado por el usuario, filtro el cuál puede ser el título, fecha o tipo de comunicado).
+
+4.- Formulario de contacto validado con JavaScript, incluyendo validación de correo y sanitización básica de datos.
+
+5.- Implementación de modo oscuro/claro con persistencia usando localStorage.
+
+6.- Accesibilidad con JavaScript (Gestión de foco de los menús y atributos ARIA).
+
+7.- Carrito o lista de favoritos para sección de comunicados.
