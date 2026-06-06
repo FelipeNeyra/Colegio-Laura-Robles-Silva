@@ -27,6 +27,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Permitir activar los elementos del menú con Enter o Space cuando tienen foco
+    if (dropdownItems) {
+        dropdownItems.forEach(item => {
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    item.click();
+                }
+            });
+        });
+    }
+
     //Función que se activa al hacer click en el botón
     btnMenu_Accesibilidad.addEventListener('change', () => {
         if (btnMenu_Accesibilidad.checked) {
