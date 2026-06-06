@@ -1350,6 +1350,13 @@ body.tema-oscuro .comunicados-favoritos h3 {
 /* =========================================
    RESPONSIVE DESIGN
    ========================================= */
+@media (max-width: 1490px) {
+    .comunicados-layout { grid-template-columns: 1fr; }
+    .lista-comunicados { grid-template-columns: repeat(3, minmax(220px, 1fr)); }
+    .comunicados-favoritos { grid-template-columns: 1fr; }
+}
+
+
 @media (max-width: 992px) { /* Ajustes para tabletas y pantallas medianas */
     .grid-vms { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .encabezado-vms h2 { font-size: 2rem; }
@@ -1369,6 +1376,7 @@ body.tema-oscuro .comunicados-favoritos h3 {
     .lista-comunicados { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
 
     .lista-comunicados { grid-template-columns: 1fr; }
+    .comunicados-favoritos { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) { /* Ajustes para móviles grandes y pantallas pequeñas */
